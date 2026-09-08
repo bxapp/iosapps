@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="View3D Pro — a fast, private, fully-offline 3D model viewer for iPhone and iPad. Open STL, OBJ, GLB and GLTF files instantly.">
+<title>View3D Pro — Offline 3D Model Viewer</title>
+<style>
+  :root{
+    --bg:#0b0f1a; --card:#131a2b; --text:#f2f4f9; --muted:#9aa6bd;
+    --line:rgba(255,255,255,.09); --brand:#4f7dff; --brand2:#9b6bff; --radius:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"PingFang SC","Microsoft YaHei",sans-serif;
+    background:radial-gradient(1200px 600px at 50% -10%,#1c2a57 0%,var(--bg) 55%);
+    background-attachment:fixed;color:var(--text);line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:880px;margin:0 auto;padding:0 22px}
+  /* Hero */
+  .hero{text-align:center;padding:76px 22px 60px}
+  .logo{
+    width:84px;height:84px;margin:0 auto 22px;border-radius:22px;
+    background:linear-gradient(135deg,var(--brand),var(--brand2));
+    display:flex;align-items:center;justify-content:center;font-size:40px;
+    box-shadow:0 18px 40px rgba(79,125,255,.35);
+  }
+  .hero h1{font-size:38px;font-weight:800;letter-spacing:-.02em}
+  .hero .sub{color:var(--muted);font-size:17px;margin-top:12px;max-width:560px;margin-left:auto;margin-right:auto}
+  .appstore-badge{
+    display:inline-flex;align-items:center;gap:12px;margin-top:26px;color:#fff;
+    background:#0a0a0a;border:1px solid var(--line);padding:11px 22px;border-radius:14px;text-decoration:none;
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
+  }
+  .appstore-badge small{display:block;font-size:11px;color:#b9c0d0}
+  .appstore-badge b{font-size:17px;letter-spacing:0}
+  /* Feature grid */
+  .features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:24px 0 8px}
+  .f{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+  .f .ic{font-size:26px;margin-bottom:12px}
+  .f h3{font-size:16px;font-weight:800;margin-bottom:6px}
+  .f p{color:var(--muted);font-size:14px}
+  /* Section */
+  section{padding:36px 0}
+  section h2{font-size:26px;font-weight:800;text-align:center;margin-bottom:8px}
+  section .lead{text-align:center;color:var(--muted);margin-bottom:28px}
+  .pillars{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .p{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+  .p h4{display:flex;align-items:center;gap:9px;font-size:16px;font-weight:800;margin-bottom:8px}
+  .p p{color:var(--muted);font-size:14px}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+  .chip{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:9px 18px;font-size:14px;color:#dfe5f2}
+  .chip b{color:#fff}
+  /* FAQ */
+  details{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:10px;padding:15px 18px}
+  summary{font-weight:700;cursor:pointer;font-size:15px}
+  details p{color:var(--muted);font-size:14px;margin-top:10px}
+  footer{border-top:1px solid var(--line);margin-top:24px;padding:30px 0 44px;text-align:center;color:var(--muted);font-size:13px}
+  footer a{color:var(--brand);text-decoration:none}
+  @media (max-width:720px){
+    .hero h1{font-size:29px}
+    .features{grid-template-columns:1fr 1fr}
+    .pillars{grid-template-columns:1fr}
+  }
+  @media (max-width:480px){ .features{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="logo">🧊</div>
+    <h1>View3D Pro</h1>
+    <p class="sub">Open, inspect &amp; share 3D models on iPhone and iPad. <b style="color:#fff">Fully offline, private, and incredibly fast.</b></p>
+    <a class="appstore-badge" href="#features">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M16.4 11.6c0-2 1.6-2.9 1.7-3-1-1.4-2.5-1.6-3-1.7-1.3-.1-2.5.8-3.2.8-.7 0-1.7-.8-2.8-.7-1.4 0-2.8.8-3.5 2.1-1.5 2.6-.4 6.4 1.1 8.6.7 1 1.6 2.2 2.7 2.1 1.1 0 1.5-.7 2.8-.7s1.5.7 2.8.7c1.2 0 1.9-1 2.6-2 .9-1.2 1.2-2.4 1.2-2.5-.1-.1-2.4-.9-2.4-3.7z" fill="#7fb2ff"/><path d="M14.7 4.6c.6-.8 1-1.8.9-2.9-.9 0-1.9.6-2.5 1.4-.6.7-1.1 1.7-1 2.7 1 .1 2-.5 2.6-1.2z" fill="#7fb2ff"/></svg>
+      <span><small>Available on the</small><b>App Store</b></span>
+    </a>
+    <p style="color:var(--muted);font-size:13px;margin-top:14px">iOS 15+ · iPhone &amp; iPad</p>
+  </div>
+
+  <!-- Features -->
+  <div class="wrap" id="features">
+    <div class="features">
+      <div class="f"><div class="ic">📂</div><h3>Universal Formats</h3><p>STL, OBJ, GLB &amp; GLTF — the standard files for 3D printing, CAD, and game design.</p></div>
+      <div class="f"><div class="ic">⚡</div><h3>Instant Open</h3><p>Native engine loads files in seconds — even large models render smoothly.</p></div>
+      <div class="f"><div class="ic">🖐️</div><h3>Intuitive Controls</h3><p>Rotate, orbit, zoom &amp; pan with simple, responsive one-finger gestures.</p></div>
+      <div class="f"><div class="ic">🔎</div><h3>Precision Review</h3><p>Wireframe &amp; solid views for engineering review and print-readiness checks.</p></div>
+      <div class="f"><div class="ic">🔗</div><h3>Open From Anywhere</h3><p>Import directly from Files, AirDrop, Mail, Safari, or any sharing app.</p></div>
+      <div class="f"><div class="ic">🕶️</div><h3>Beautiful Dark Mode</h3><p>Follows your system appearance and adapts to any lighting environment.</p></div>
+    </div>
+  </div>
+
+  <!-- Why View3D Pro -->
+  <section>
+    <div class="wrap">
+      <h2>Why creators choose View3D Pro</h2>
+      <p class="lead">Built around one principle: your model should stay yours.</p>
+      <div class="pillars">
+        <div class="p">
+          <h4>🔒 Fully Offline &amp; Private</h4>
+          <p>Zero internet required. Files never leave your device — no servers, no tracking, no accounts. Perfect for confidential or pre-release designs.</p>
+        </div>
+        <div class="p">
+          <h4>⚡ Fast on Any Device</h4>
+          <p>Local rendering keeps performance smooth whether you're online or on a plane. High-fidelity lighting, materials, and textures in an instant.</p>
+        </div>
+        <div class="p">
+          <h4>🎯 Professional Quality</h4>
+          <p>Engineered with the rendering technology trusted by engineers and designers. Precise inspection and clean output for real workflows.</p>
+        </div>
+        <div class="p">
+          <h4>📦 Lightweight &amp; Respectful</h4>
+          <p>No account, no background data usage, no clutter. Open a model and go — everything stays in the app's secure sandbox.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Formats -->
+  <section>
+    <div class="wrap">
+      <h2>Every standard format, out of the box</h2>
+      <p class="lead">Smart detection reads the real file content, so mislabeled files still open correctly.</p>
+      <div class="chips">
+        <span class="chip"><b>STL</b> — 3D printing</span>
+        <span class="chip"><b>OBJ</b> — CAD &amp; meshes</span>
+        <span class="chip"><b>GLB</b> — game &amp; AR</span>
+        <span class="chip"><b>GLTF</b> — web &amp; interactivity</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <div class="wrap">
+      <h2>Questions &amp; answers</h2>
+      <p class="lead">Quick answers to the most common questions.</p>
+      <details><summary>Is View3D Pro really free of internet?</summary><p>Yes. All rendering happens locally on your device. No files are ever uploaded or synced.</p></details>
+      <details><summary>Can it open large models?</summary><p>Absolutely. Files up to 100MB are supported. Very large files show a quick confirmation before opening.</p></details>
+      <details><summary>How do I get my files into the app?</summary><p>Open any STL, OBJ, GLB, or GLTF directly from Files, AirDrop, Mail, or any sharing app.</p></details>
+      <details><summary>Is my data safe?</summary><p>Your files stay in the app's private sandbox and are completely removed when you uninstall the app.</p></details>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="wrap">
+      <div style="margin-bottom:14px"><b style="color:#fff;font-size:16px">View3D Pro</b></div>
+      <a href="mailto:supportbx@163.com">supportbx@163.com</a> &nbsp;·&nbsp; Technical Support<br>
+      © 2026 View3D. All rights reserved.
+    </div>
+  </footer>
+
+</body>
+</html>
