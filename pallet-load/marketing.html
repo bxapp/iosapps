@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pallet Master — Offline Pallet Loading Calculator &amp; 3D Stacking Planner</title>
+<meta name="description" content="Pallet Master calculates the best way to stack boxes on a pallet and load a container, entirely offline. Interactive 3D preview, standard pallets and containers, PDF worksheets. One purchase, no subscription.">
+<style>
+  :root{
+    --bg:#f5f8fd; --card:#ffffff; --text:#0f172a; --muted:#5a6b85;
+    --brand:#2563eb; --brand-dark:#1d4ed8; --brand-soft:#dcebff; --line:#e3e9f2;
+    --shadow:0 10px 30px rgba(15,23,42,.06);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0b1220; --card:#131c2e; --text:#e8eefb; --muted:#9fb0c9;
+      --brand:#6aa6ff; --brand-dark:#4b8ff0; --brand-soft:#1b2b46; --line:#22304a;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--brand); text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:1000px; margin:0 auto; padding:0 20px}
+  header.site{background:var(--card); border-bottom:1px solid var(--line)}
+  .nav{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:16px 20px; flex-wrap:wrap}
+  .brand{display:flex; align-items:center; gap:10px; font-weight:700; color:var(--text); letter-spacing:-.01em}
+  .brand:hover{text-decoration:none}
+  .mark{width:26px; height:26px; border-radius:8px; background:var(--brand-soft); border:1px solid var(--line); display:grid; place-items:center}
+  .mark svg{width:15px; height:15px; display:block}
+  nav.links{display:flex; gap:18px; font-size:15px}
+  nav.links a{color:var(--muted)}
+  nav.links a.active{color:var(--brand); font-weight:600}
+
+  .hero{display:grid; grid-template-columns:1.15fr .85fr; gap:36px; align-items:center; padding:56px 0 44px}
+  @media (max-width:820px){ .hero{grid-template-columns:1fr; padding:38px 0 28px} }
+  .eyebrow{display:inline-block; font-size:13px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--brand); background:var(--brand-soft); border-radius:999px; padding:5px 12px; margin-bottom:16px}
+  h1{font-size:clamp(30px,4.8vw,46px); line-height:1.13; margin:0 0 16px; letter-spacing:-.025em}
+  .lede{font-size:18px; color:var(--muted); margin:0 0 24px; max-width:56ch}
+  .cta{display:flex; gap:12px; flex-wrap:wrap; align-items:center}
+  .btn{display:inline-block; background:var(--brand); color:#fff !important; font-weight:650; padding:13px 24px; border-radius:999px; text-decoration:none !important}
+  .btn:hover{background:var(--brand-dark)}
+  .btn.ghost{background:transparent; color:var(--brand) !important; border:1px solid var(--line)}
+  .hero-art{background:linear-gradient(160deg,var(--brand-soft),transparent 70%); border:1px solid var(--line); border-radius:22px; padding:18px; box-shadow:var(--shadow)}
+  .hero-art svg{display:block; width:100%; height:auto}
+
+  .strip{display:flex; gap:12px; flex-wrap:wrap; padding:0 0 40px}
+  .pill{border:1px solid var(--line); background:var(--card); border-radius:999px; padding:8px 16px; font-size:14px; color:var(--muted)}
+
+  main section{padding:34px 0}
+  h2{font-size:clamp(22px,3vw,30px); margin:0 0 8px; letter-spacing:-.02em}
+  .sub{color:var(--muted); margin:0 0 26px; max-width:70ch}
+
+  .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+  @media (max-width:820px){ .grid{grid-template-columns:1fr} }
+  .card{background:var(--card); border:1px solid var(--line); border-radius:16px; padding:20px 22px; box-shadow:var(--shadow)}
+  .card h3{font-size:16px; margin:0 0 8px; letter-spacing:-.01em}
+  .card p{margin:0; color:var(--muted); font-size:15px}
+  .ico{width:34px; height:34px; border-radius:10px; background:var(--brand-soft); display:grid; place-items:center; margin-bottom:12px}
+  .ico svg{width:18px; height:18px}
+
+  .two{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+  @media (max-width:820px){ .two{grid-template-columns:1fr} }
+  ul.checks{list-style:none; padding:0; margin:0}
+  ul.checks li{padding-left:26px; position:relative; margin:9px 0}
+  ul.checks li::before{content:""; position:absolute; left:0; top:.55em; width:12px; height:7px; border-left:2px solid var(--brand); border-bottom:2px solid var(--brand); transform:rotate(-45deg)}
+
+  table{width:100%; border-collapse:collapse; font-size:15px}
+  th,td{text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); vertical-align:top}
+  th{font-size:13px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); font-weight:600}
+  tr:last-child td{border-bottom:0}
+
+  .offer{display:grid; grid-template-columns:1fr auto; gap:26px; align-items:center}
+  @media (max-width:820px){ .offer{grid-template-columns:1fr} }
+  .offer .card{padding:28px 30px}
+
+  footer.site{margin-top:26px; border-top:1px solid var(--line); background:var(--card)}
+  footer.site .wrap{padding:26px 20px; display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap; font-size:14px; color:var(--muted)}
+  footer.site nav{display:flex; gap:16px; flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="brand" href="./marketing.html">
+      <span class="mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="8" height="6" rx="1" fill="#2563eb"/><rect x="13" y="4" width="8" height="6" rx="1" fill="#7aa8f5"/><rect x="3" y="12" width="8" height="6" rx="1" fill="#7aa8f5"/><rect x="13" y="12" width="8" height="6" rx="1" fill="#2563eb"/></svg>
+      </span>
+      Pallet Master
+    </a>
+    <nav class="links">
+      <a href="./marketing.html" class="active">Product</a>
+      <a href="./support.html">Support</a>
+      <a href="./privacy.html">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <div>
+      <span class="eyebrow">Offline · No account · No subscription</span>
+      <h1>Stack it right the first time.</h1>
+      <p class="lede">
+        Pallet Master calculates the best way to stack your cartons on a pallet and load your container — in seconds, with no internet connection. Enter a box size, pick a pallet, and get an interactive 3D stacking plan you can hand straight to the crew.
+      </p>
+      <div class="cta">
+        <!-- Replace id0000000000 with your App Store app ID once the app is live. -->
+        <a class="btn" href="https://apps.apple.com/app/id0000000000" rel="noopener">Download on the App Store</a>
+        <a class="btn ghost" href="./support.html">Read the FAQ</a>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 260 220" role="img">
+        <rect x="18" y="14" width="66" height="38" rx="3" fill="#7aa8f5"/>
+        <rect x="96" y="14" width="66" height="38" rx="3" fill="#2563eb"/>
+        <rect x="174" y="14" width="66" height="38" rx="3" fill="#7aa8f5"/>
+        <rect x="18" y="58" width="66" height="38" rx="3" fill="#2563eb"/>
+        <rect x="96" y="58" width="66" height="38" rx="3" fill="#7aa8f5"/>
+        <rect x="174" y="58" width="66" height="38" rx="3" fill="#2563eb"/>
+        <rect x="18" y="102" width="66" height="38" rx="3" fill="#7aa8f5"/>
+        <rect x="96" y="102" width="66" height="38" rx="3" fill="#2563eb"/>
+        <rect x="174" y="102" width="66" height="38" rx="3" fill="#7aa8f5"/>
+        <rect x="10" y="146" width="238" height="12" rx="3" fill="#c7a37a"/>
+        <rect x="22" y="158" width="30" height="18" rx="2" fill="#b08d63"/>
+        <rect x="114" y="158" width="30" height="18" rx="2" fill="#b08d63"/>
+        <rect x="206" y="158" width="30" height="18" rx="2" fill="#b08d63"/>
+        <rect x="10" y="176" width="238" height="12" rx="3" fill="#c7a37a"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="strip">
+    <span class="pill">100% offline</span>
+    <span class="pill">Interactive 3D</span>
+    <span class="pill">8 standard pallets</span>
+    <span class="pill">Containers &amp; trucks</span>
+    <span class="pill">PDF worksheet export</span>
+    <span class="pill">One purchase, forever</span>
+  </div>
+
+  <section>
+    <h2>Built for people who load containers for a living</h2>
+    <p class="sub">Every day, someone is asked the same two questions: how many boxes fit on this pallet, and how many pallets fit in this container? Pallet Master answers both before the truck arrives — and shows you the answer in 3D.</p>
+    <div class="grid">
+      <div class="card">
+        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round"><path d="M12 3l7 4v6c0 4-3 7-7 8-4-1-7-4-7-8V7l7-4z"/></svg></div>
+        <h3>100% offline and private</h3>
+        <p>No internet, no account, no cloud sync, no analytics. Every standard, the algorithm and the 3D engine run on your device — and your data never leaves it.</p>
+      </div>
+      <div class="card">
+        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+        <h3>A professional stacking engine</h3>
+        <p>Tests both orientations and both patterns — column and 90° interlock — then recommends the plan with the highest box count and the best stability, with 2–3 alternatives to compare.</p>
+      </div>
+      <div class="card">
+        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3.5 10h17M3.5 14h17M12 3c2.5 3 2.5 15 0 18M12 3c-2.5 3-2.5 15 0 18"/></svg></div>
+        <h3>See it before you load it</h3>
+        <p>Orbit, zoom and pan the load in 3D. Snap to top, 45° or side view. Hide any layer to check how each course is arranged, then save a screenshot to your photo library.</p>
+      </div>
+      <div class="card">
+        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round"><path d="M4 7h16v12H4z"/><path d="M8 7V5h8v2M4 12h16"/></svg></div>
+        <h3>Standards already loaded</h3>
+        <p>20GP, 40GP, 40HQ, 45HQ containers and 4.2 m / 9.6 m trucks. Eight pallet standards from EUR to CHEP and US 48×40 in. Or enter any custom size, tare weight and capacity.</p>
+      </div>
+      <div class="card">
+        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round"><path d="M6 3h9l4 4v14H6z"/><path d="M9 12h7M9 16h7M9 8h3"/></svg></div>
+        <h3>Paperwork in one tap</h3>
+        <p>Export a PDF worksheet with the full parameter table and the embedded 3D preview — then share, email or print it for the loading team.</p>
+      </div>
+      <div class="card">
+        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round"><path d="M12 4v16M6 10l6-6 6 6"/><circle cx="12" cy="20" r="1.5"/></svg></div>
+        <h3>Two taps to a plan</h3>
+        <p>Ninety per cent of jobs need only the basics. Every advanced constraint — max layers, height cap, forklift clearance, rotation — stays folded away until you need it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>What you get on the result screen</h2>
+    <p class="sub">No spreadsheets, no guessing, no phone calls from the dock.</p>
+    <div class="two">
+      <div class="card">
+        <h3>Key figures, instantly</h3>
+        <ul class="checks">
+          <li>Boxes per layer, number of layers and boxes per pallet</li>
+          <li>Pallet stacking height and total gross weight</li>
+          <li>Pallet space utilisation</li>
+          <li>Pallets per carrier and boxes per carrier</li>
+          <li>Clear red warnings for over-height and over-weight loads</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Planning that scales</h3>
+        <ul class="checks">
+          <li><strong>Capacity mode</strong> — how much fits on one pallet and in one carrier</li>
+          <li><strong>Quantity mode</strong> — enter the shipment quantity to get the exact number of pallets and carriers, plus what rides on the last partial pallet</li>
+          <li><strong>History</strong> — save any plan with a thumbnail and reopen it with every parameter restored</li>
+          <li>Light and dark appearance, iPhone and iPad, 12 languages</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Built on real shipping standards</h2>
+    <p class="sub">Sizes are the standard internal dimensions used in the industry. Anything non-standard can be entered by hand.</p>
+    <div class="two">
+      <div class="card">
+        <h3>Carriers</h3>
+        <table>
+          <tbody>
+            <tr><td>20GP</td><td>5.9 × 2.35 × 2.39 m</td></tr>
+            <tr><td>40GP</td><td>12.0 × 2.35 × 2.39 m</td></tr>
+            <tr><td>40HQ</td><td>12.0 × 2.35 × 2.70 m</td></tr>
+            <tr><td>45HQ</td><td>13.6 × 2.35 × 2.70 m</td></tr>
+            <tr><td>4.2 m truck</td><td>4.2 × 2.1 × 2.0 m</td></tr>
+            <tr><td>9.6 m truck</td><td>9.6 × 2.45 × 2.7 m</td></tr>
+            <tr><td>Pallet only</td><td>No container or truck</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card">
+        <h3>Pallets</h3>
+        <table>
+          <tbody>
+            <tr><td>1200 × 1000</td><td>China · ISO</td></tr>
+            <tr><td>1100 × 1100</td><td>Asia</td></tr>
+            <tr><td>1200 × 800</td><td>EUR</td></tr>
+            <tr><td>1219 × 1016</td><td>US 48 × 40 in</td></tr>
+            <tr><td>1165 × 1165</td><td>AU</td></tr>
+            <tr><td>1067 × 1067</td><td>US 42 × 42 in</td></tr>
+            <tr><td>1140 × 1140</td><td>EUR · CHEP</td></tr>
+            <tr><td>1000 × 1200</td><td>EUR</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Who it is for</h2>
+    <p class="sub">Warehouse and shipping teams, freight forwarders, 3PL operators, e-commerce sellers preparing their own shipments, exporters, factory planners and anyone who has ever asked: how many boxes fit on this pallet, and how many pallets fit in this container?</p>
+  </section>
+
+  <section>
+    <h2>One purchase. Yours forever.</h2>
+    <div class="offer">
+      <div class="card">
+        <p style="margin:0 0 12px"><strong>No subscription. No in-app purchases. No ads. No upsells.</strong></p>
+        <p style="margin:0; color:var(--muted)">Buy the app once and every feature is yours for good — including updates to the version you own. There is no account to create, no trial to expire and no usage limit to hit.</p>
+      </div>
+      <div class="cta">
+        <!-- Replace id0000000000 with your App Store app ID once the app is live. -->
+        <a class="btn" href="https://apps.apple.com/app/id0000000000" rel="noopener">Get it on the App Store</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div>© 2026 Pallet Master. All rights reserved.</div>
+    <nav>
+      <a href="./marketing.html">Product</a>
+      <a href="./support.html">Support</a>
+      <a href="./privacy.html">Privacy Policy</a>
+      <a href="mailto:supportbx@163.com">supportbx@163.com</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support — Pallet Master</title>
+<meta name="description" content="Support and help for Pallet Master, the offline pallet loading calculator and 3D stacking planner.">
+<style>
+  :root{
+    --bg:#f5f8fd; --card:#ffffff; --text:#0f172a; --muted:#5a6b85;
+    --brand:#2563eb; --brand-soft:#dcebff; --line:#e3e9f2; --shadow:0 10px 30px rgba(15,23,42,.06);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0b1220; --card:#131c2e; --text:#e8eefb; --muted:#9fb0c9;
+      --brand:#6aa6ff; --brand-soft:#1b2b46; --line:#22304a; --shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--brand); text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:880px; margin:0 auto; padding:0 20px}
+  header.site{background:var(--card); border-bottom:1px solid var(--line)}
+  .nav{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:16px 20px; flex-wrap:wrap}
+  .brand{display:flex; align-items:center; gap:10px; font-weight:700; color:var(--text); letter-spacing:-.01em}
+  .brand:hover{text-decoration:none}
+  .mark{width:26px; height:26px; border-radius:8px; background:var(--brand-soft); border:1px solid var(--line); display:grid; place-items:center}
+  .mark svg{width:15px; height:15px; display:block}
+  nav.links{display:flex; gap:18px; font-size:15px}
+  nav.links a{color:var(--muted)}
+  nav.links a.active{color:var(--brand); font-weight:600}
+  main{padding:44px 0 8px}
+  h1{font-size:clamp(28px,4.4vw,38px); line-height:1.2; margin:0 0 10px; letter-spacing:-.02em}
+  .lede{font-size:18px; color:var(--muted); margin:0 0 28px}
+  h2{font-size:20px; margin:38px 0 12px; letter-spacing:-.01em}
+  h3{font-size:16px; margin:24px 0 6px}
+  p{margin:0 0 14px}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:16px; padding:22px 24px; box-shadow:var(--shadow)}
+  .contact{display:flex; align-items:center; gap:16px; flex-wrap:wrap}
+  .contact .big{font-size:19px; font-weight:650}
+  .btn{
+    display:inline-block; background:var(--brand); color:#fff !important; font-weight:600;
+    padding:12px 22px; border-radius:999px; text-decoration:none !important;
+  }
+  .btn.ghost{background:transparent; color:var(--brand) !important; border:1px solid var(--line)}
+  details{border-top:1px solid var(--line); padding:14px 0}
+  details:first-of-type{border-top:0}
+  details summary{
+    cursor:pointer; font-weight:600; list-style:none; display:flex; justify-content:space-between; gap:14px; align-items:flex-start;
+  }
+  details summary::-webkit-details-marker{display:none}
+  details summary::after{content:"+"; color:var(--brand); font-weight:700; flex:none}
+  details[open] summary::after{content:"–"}
+  details .answer{padding:10px 0 2px; color:var(--muted)}
+  details .answer ul{margin:8px 0 0; padding-left:20px}
+  details .answer li{margin:4px 0}
+  ul.checks{list-style:none; padding:0; margin:0}
+  ul.checks li{padding-left:26px; position:relative; margin:8px 0}
+  ul.checks li::before{
+    content:""; position:absolute; left:0; top:.55em; width:12px; height:7px;
+    border-left:2px solid var(--brand); border-bottom:2px solid var(--brand); transform:rotate(-45deg);
+  }
+  footer.site{margin-top:52px; border-top:1px solid var(--line); background:var(--card)}
+  footer.site .wrap{padding:26px 20px; display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap; font-size:14px; color:var(--muted)}
+  footer.site nav{display:flex; gap:16px; flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="brand" href="./marketing.html">
+      <span class="mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="8" height="6" rx="1" fill="#2563eb"/><rect x="13" y="4" width="8" height="6" rx="1" fill="#7aa8f5"/><rect x="3" y="12" width="8" height="6" rx="1" fill="#7aa8f5"/><rect x="13" y="12" width="8" height="6" rx="1" fill="#2563eb"/></svg>
+      </span>
+      Pallet Master
+    </a>
+    <nav class="links">
+      <a href="./marketing.html">Product</a>
+      <a href="./support.html" class="active">Support</a>
+      <a href="./privacy.html">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <h1>Support</h1>
+  <p class="lede">Questions about stacking plans, pallets, carriers or the app itself? We are happy to help.</p>
+
+  <div class="card contact">
+    <div>
+      <div class="big">Email us</div>
+      <div style="color:var(--muted)">supportbx@163.com &nbsp;·&nbsp; we reply within 2 business days</div>
+    </div>
+    <a class="btn" href="mailto:supportbx@163.com?subject=Pallet%20Master%20Support">Send an email</a>
+  </div>
+
+  <p style="margin-top:16px; color:var(--muted)">
+    You can also send feedback without leaving the app: open <strong>Settings → Feedback</strong>, pick a category and a rating, and tap Submit. Your message will be handed to your own mail app so nothing is sent without you seeing it first.
+  </p>
+
+  <h2>Frequently asked questions</h2>
+
+  <details open>
+    <summary>Does the app need an internet connection or an account?</summary>
+    <div class="answer">
+      No. Pallet Master is fully offline. There is no sign-up, no login, no cloud sync and no analytics. Every pallet standard, every stacking algorithm and the 3D engine run entirely on your iPhone or iPad, so the app works the same in a warehouse basement, on a container yard or at sea.
+    </div>
+  </details>
+
+  <details>
+    <summary>Where is my data stored, and how do I delete it?</summary>
+    <div class="answer">
+      Everything you enter — box sizes, weights, pallet specs and your saved stacking history — stays on your device only. It is never uploaded anywhere.
+      <ul>
+        <li>To remove a single saved plan: open <strong>History</strong> and swipe or tap delete on that record.</li>
+        <li>To remove everything at once: open <strong>Settings → Clear app data</strong>.</li>
+        <li>Deleting the app from your device also removes all of its data.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary>Which units does the app use?</summary>
+    <div class="answer">
+      All dimensions are entered and displayed in <strong>millimetres (mm)</strong> and all weights in <strong>kilograms (kg)</strong>. Unit hints are shown next to every input field.
+    </div>
+  </details>
+
+  <details>
+    <summary>What is the difference between column stacking and interlock?</summary>
+    <div class="answer">
+      <ul>
+        <li><strong>Column stacking</strong> keeps every box in the same orientation, layer after layer. It usually fits the most boxes, but the load is less stable.</li>
+        <li><strong>Interlock</strong> rotates boxes 90° between layers so they tie the stack together. It is noticeably more stable and is the usual choice for heavier cartons.</li>
+        <li><strong>Auto best</strong> tries both and recommends the plan with the highest box count first, preferring the more stable pattern when the count is the same.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary>Why does nothing happen when I pick Interlock?</summary>
+    <div class="answer">
+      Interlock requires rotation. Turn on <strong>Cargo → Advanced → Allow rotation</strong>. The app will tell you when rotation is needed — without it, a 90° interlocked pattern cannot be built.
+    </div>
+  </details>
+
+  <details>
+    <summary>What do the red over-height and over-weight warnings mean?</summary>
+    <div class="answer">
+      The app checks every plan against three limits and blocks anything that breaks them:
+      <ul>
+        <li>The pallet's own maximum load.</li>
+        <li>The total stack height you allowed, including the pallet itself.</li>
+        <li>The selected carrier's inner height and payload limit.</li>
+      </ul>
+      If a warning appears, reduce the maximum number of layers, or pick a taller/lighter carrier.
+    </div>
+  </details>
+
+  <details>
+    <summary>How do I know the result is realistic?</summary>
+    <div class="answer">
+      The calculation uses the exact pallet and carrier dimensions you selected, including pallet height and tare weight. Always confirm with your own loading rules where a specific standard, overhang policy or safety margin applies — the <strong>Advanced</strong> panels let you add a maximum layer count, a total height cap and a forklift clearance so the plan matches your real operating practice.
+    </div>
+  </details>
+
+  <details>
+    <summary>How do I save a picture of the 3D view?</summary>
+    <div class="answer">
+      On the Result screen, tap the camera button. The image is added to your photo library. The first time you do this, iOS will ask for permission — if you declined it, enable <strong>Photos</strong> for Pallet Master in iOS Settings and try again.
+    </div>
+  </details>
+
+  <details>
+    <summary>Can I print or share a stacking plan with my team?</summary>
+    <div class="answer">
+      Yes. On the Result screen open <strong>More actions → Export PDF worksheet</strong>. The PDF contains the full parameter table and the embedded 3D preview, and can be shared, emailed or printed through the standard iOS share sheet.
+    </div>
+  </details>
+
+  <details>
+    <summary>How do I save a plan and come back to it later?</summary>
+    <div class="answer">
+      Tap <strong>Save to history</strong> on the Result screen. Open <strong>History</strong> at any time to see every saved plan with a thumbnail; tapping one restores all of its parameters so you can recalculate or adjust it.
+    </div>
+  </details>
+
+  <details>
+    <summary>The feedback form cannot send my message. What should I do?</summary>
+    <div class="answer">
+      The form uses your device's mail app. If no email account is configured on the device, the message cannot be sent — please email us directly at <a href="mailto:supportbx@163.com">supportbx@163.com</a>.
+    </div>
+  </details>
+
+  <details>
+    <summary>How do I request a refund?</summary>
+    <div class="answer">
+      All App Store purchases are handled by Apple, so refunds are requested from Apple rather than from us. Visit <a href="https://reportaproblem.apple.com" rel="noopener">reportaproblem.apple.com</a>, sign in with the Apple Account used for the purchase, and follow the steps. If we can help resolve the problem instead, please email us first.
+    </div>
+  </details>
+
+  <h2>Quick troubleshooting</h2>
+  <ul class="checks">
+    <li>Double-check that you entered dimensions in millimetres — a 400 mm carton is not 40 cm or 4 m in the field.</li>
+    <li>If the app reports that the cargo does not fit, check the box size against the pallet size, and try enabling rotation.</li>
+    <li>If a plan looks unstable, switch from Column to Interlock in <strong>Cargo → Advanced → Stacking mode</strong>.</li>
+    <li>If results seem stale, step back one screen, change a parameter and return — the plan recalculates automatically.</li>
+    <li>If the app behaves unexpectedly, close it completely and reopen it. Your history and settings are preserved.</li>
+    <li>Still stuck? Email us with your box size, pallet size and the carrier you selected, and we will work it out with you.</li>
+  </ul>
+
+  <h2>Before you write to us</h2>
+  <p>
+    Including the following saves a round trip: your device model and iOS version, the app version (shown in the App Store listing), the exact dimensions you entered in millimetres, the pallet and carrier you chose, and what you expected to see instead.
+  </p>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div>© 2026 Pallet Master. All rights reserved.</div>
+    <nav>
+      <a href="./marketing.html">Product</a>
+      <a href="./support.html">Support</a>
+      <a href="./privacy.html">Privacy Policy</a>
+      <a href="mailto:supportbx@163.com">supportbx@163.com</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
