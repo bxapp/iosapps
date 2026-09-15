@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3D Load Calculator — Container Loading Planner for iPhone &amp; iPad</title>
+<meta name="description" content="Plan a real container load in true 3D, entirely offline. Engineering-grade packing engine, pallet mode, PDF export. Buy once, no subscription, no ads, no data collection.">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --brand:#0A2F8C;--brand-2:#2563EB;--brand-ink:#081C4D;
+  --ink:#0F1729;--ink-2:#4A5567;--ink-3:#6E7A8C;
+  --bg:#F5F7FB;--card:#FFFFFF;--line:#E4E8F0;--soft:#EEF2FB;
+  --radius:18px;--radius-sm:12px;
+  --shadow:0 1px 2px rgba(16,24,40,.04),0 8px 24px rgba(16,24,40,.06);
+  --shadow-lg:0 2px 4px rgba(16,24,40,.05),0 20px 50px rgba(16,24,40,.10);
+  --max:1000px;
+}
+@media (prefers-color-scheme:dark){
+  :root{--brand:#8FAEFF;--brand-2:#7FA0FF;
+    --ink:#E8ECF5;--ink-2:#A7B1C4;--ink-3:#8C97AB;
+    --bg:#0A1020;--card:#111A2E;--line:#222E48;--soft:#17203A;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);
+    --shadow-lg:0 2px 4px rgba(0,0,0,.3),0 24px 60px rgba(0,0,0,.45);}
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","PingFang SC","Hiragino Sans","Microsoft YaHei",sans-serif;
+}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+a{color:var(--brand-2);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3{line-height:1.25;letter-spacing:-.015em}
+p{margin:0 0 14px;color:var(--ink-2)}
+header.site{border-bottom:1px solid var(--line);background:var(--card);position:sticky;top:0;z-index:5}
+.head{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);font-weight:650;font-size:15px}
+.brand:hover{text-decoration:none}
+.brand svg{display:block;flex:none}
+nav{display:flex;gap:18px;font-size:14px;flex-wrap:wrap}
+nav a{color:var(--ink-3);font-weight:500}
+nav a[aria-current="page"]{color:var(--brand);font-weight:650}
+
+/* ---------- hero ---------- */
+.hero{padding:56px 0 10px;display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+@media (max-width:860px){.hero{grid-template-columns:1fr;gap:8px;padding-top:40px}}
+.tag{display:inline-block;font-size:12px;font-weight:650;letter-spacing:.08em;text-transform:uppercase;color:var(--brand);background:var(--soft);border-radius:999px;padding:5px 12px;margin-bottom:18px}
+.hero h1{font-size:clamp(32px,5.4vw,50px);margin:0 0 16px}
+.hero p.lead{font-size:18.5px;max-width:560px}
+.cta{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:24px 0 8px}
+.btn{display:inline-block;background:var(--brand);color:#fff;font-weight:650;font-size:15.5px;border-radius:13px;padding:14px 24px}
+.btn.ghost{background:transparent;color:var(--brand);border:1.5px solid var(--line)}
+.btn:hover{text-decoration:none;opacity:.92}
+@media (prefers-color-scheme:dark){.btn{color:#08122B}.btn.ghost{color:var(--brand-2)}}
+.hero-art{width:100%;height:auto;display:block}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+.chip{font-size:13px;font-weight:600;color:var(--ink-2);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 13px}
+
+/* ---------- sections ---------- */
+h2.sec{font-size:clamp(22px,3.2vw,30px);margin:64px 0 8px}
+p.sec-sub{margin-bottom:26px;max-width:680px}
+.grid{display:grid;gap:16px}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+@media (max-width:860px){.g3,.g2{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px}
+.card h3{font-size:17.5px;margin:0 0 8px}
+.card p{margin-bottom:0;font-size:15px}
+.pill{display:inline-flex;width:38px;height:38px;border-radius:12px;background:var(--soft);align-items:center;justify-content:center;margin-bottom:14px}
+.pill svg{display:block}
+.flist{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:12px 28px}
+@media (max-width:760px){.flist{grid-template-columns:1fr}}
+.flist li{position:relative;padding-left:28px;color:var(--ink-2);font-size:15.5px}
+.flist li::before{
+  content:"";position:absolute;left:0;top:.55em;width:14px;height:8px;
+  border-left:2.2px solid var(--brand);border-bottom:2.2px solid var(--brand);
+  transform:rotate(-45deg) scale(.85);border-radius:1px;
+}
+.flist strong{color:var(--ink)}
+table{width:100%;border-collapse:collapse;margin:8px 0 0;font-size:14.5px}
+th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line)}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);font-weight:650}
+td{color:var(--ink-2);font-variant-numeric:tabular-nums}
+td:first-child{color:var(--ink);font-weight:600}
+tr:last-child td{border-bottom:none}
+.tscroll{overflow-x:auto}
+.note{font-size:13.5px;color:var(--ink-3);margin-top:14px}
+.band{margin:64px 0 0;background:linear-gradient(135deg,var(--brand) 0%,#1B4CC4 100%);border-radius:22px;padding:40px 32px;color:#fff;box-shadow:var(--shadow-lg)}
+.band h2{margin:0 0 10px;font-size:clamp(22px,3.2vw,30px);color:#fff}
+.band p{color:rgba(255,255,255,.86);max-width:660px}
+.band .btn{background:#fff;color:var(--brand-ink);margin-top:8px}
+.langs{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.lang{font-size:13.5px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 13px;color:var(--ink-2)}
+footer.site{margin-top:64px;border-top:1px solid var(--line);background:var(--card)}
+.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:26px 20px;font-size:13.5px;color:var(--ink-3)}
+.foot a{color:var(--ink-3)}
+.foot nav{gap:16px}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap head">
+    <a class="brand" href="./marketing.html">
+      <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 2 22 7.2v9.6L12 22 2 16.8V7.2z" fill="#0A2F8C"/>
+        <path d="M12 2 22 7.2 12 12.4 2 7.2z" fill="#3C63D8"/>
+        <path d="M12 12.4V22l10-5.2V7.2z" fill="#08246E" opacity=".85"/>
+      </svg>
+      <span>3D Load Calculator</span>
+    </a>
+    <nav>
+      <a href="./marketing.html" aria-current="page">Overview</a>
+      <a href="./support.html">Support</a>
+      <a href="./privacy-policy.html">Privacy</a>
+      <a href="https://apps.apple.com/app/id6812205911">App Store</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <section class="hero">
+      <div>
+        <span class="tag">iPhone &amp; iPad · One-time purchase</span>
+        <h1>Know exactly how your cargo fits — before you load it.</h1>
+        <p class="lead">Enter your carton sizes and quantities, pick a container, and get a real 3D loading plan in seconds. Works entirely offline, keeps your data on your device, and costs one single payment.</p>
+        <div class="cta">
+          <a class="btn" href="https://apps.apple.com/app/id6812205911">View on the App Store</a>
+          <a class="btn ghost" href="./support.html">Support &amp; FAQ</a>
+        </div>
+        <div class="chips">
+          <span class="chip">100% offline</span>
+          <span class="chip">No account</span>
+          <span class="chip">No subscription</span>
+          <span class="chip">15 languages</span>
+        </div>
+      </div>
+
+      <div>
+        <svg class="hero-art" viewBox="0 0 520 300" role="img" aria-label="Isometric illustration of cartons stacked inside a shipping container">
+          <ellipse cx="260" cy="238" rx="146" ry="20" fill="#0A2F8C" opacity=".08"/>
+          <g stroke="#FFFFFF" stroke-opacity=".55" stroke-width="1.1" stroke-linejoin="round">
+            <!-- left base carton -->
+            <polygon points="220,160 260,180 220,200 180,180" fill="#7C9BF5"/>
+            <polygon points="180,180 220,200 220,240 180,220" fill="#2A4CBC"/>
+            <polygon points="220,200 260,180 260,220 220,240" fill="#4A6BD8"/>
+            <!-- front-left base carton -->
+            <polygon points="260,140 300,160 260,180 220,160" fill="#7C9BF5"/>
+            <polygon points="220,160 260,180 260,220 220,200" fill="#2A4CBC"/>
+            <polygon points="260,180 300,160 300,200 260,220" fill="#4A6BD8"/>
+            <!-- right base carton -->
+            <polygon points="300,160 340,180 300,200 260,180" fill="#B6C4DC"/>
+            <polygon points="260,180 300,200 300,240 260,220" fill="#6C7E9C"/>
+            <polygon points="300,200 340,180 340,220 300,240" fill="#92A3BE"/>
+            <!-- top carton -->
+            <polygon points="260,100 300,120 260,140 220,120" fill="#A8BFFF"/>
+            <polygon points="220,120 260,140 260,180 220,160" fill="#2444AE"/>
+            <polygon points="260,140 300,120 300,160 260,180" fill="#4668DC"/>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <h2 class="sec">Why it is different</h2>
+    <p class="sec-sub">Most load planners are either a spreadsheet you have to trust, or a cloud service that wants your data and a monthly fee. This is neither.</p>
+
+    <div class="grid g3">
+      <div class="card">
+        <span class="pill">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3 4.5 6v5.5c0 4.3 3.1 8.2 7.5 9.5 4.4-1.3 7.5-5.2 7.5-9.5V6z"/>
+          </svg>
+        </span>
+        <h3>Offline and confidential</h3>
+        <p>No internet connection, no sign-up, no ads, no analytics, no tracking. Your dimensions, cargo names and shipping details never leave your device — which matters when confidentiality is contractual.</p>
+      </div>
+      <div class="card">
+        <span class="pill">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 18h16M6 18V8l6-4 6 4v10M10 18v-5h4v5"/>
+          </svg>
+        </span>
+        <h3>An engineering-grade engine</h3>
+        <p>Every carton is supported by a solid surface or the container floor, so nothing floats. Two independent strategies are evaluated and the better one is kept, giving a higher fill rate and a stack your team can actually build.</p>
+      </div>
+      <div class="card">
+        <span class="pill">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 7 9.5 17.5 4 12"/>
+          </svg>
+        </span>
+        <h3>Buy once, use forever</h3>
+        <p>One purchase unlocks every feature: no subscription, no recurring charge, no in-app purchases, no "pro" tier. Future updates are included, and nothing is ever held back behind a paywall.</p>
+      </div>
+    </div>
+
+    <h2 class="sec">Everything the planner does</h2>
+    <p class="sec-sub">Built around the real constraints of loading a container, not around a demo.</p>
+
+    <div class="card">
+      <ul class="flist">
+        <li><strong>Interactive 3D view</strong> — orbit, pan and zoom; tap any carton to read its details.</li>
+        <li><strong>Support-constrained packing</strong> — items never float in mid-air.</li>
+        <li><strong>Multi-container loading</strong> — fills container after container until everything is placed.</li>
+        <li><strong>8 standard containers</strong> — 20GP through 45HQ, open-top and reefer included.</li>
+        <li><strong>Custom container</strong> — your own internal dimensions and door opening.</li>
+        <li><strong>Pallet mode</strong> — unitize cargo for forklift handling.</li>
+        <li><strong>8 pallet presets</strong> — plus custom pallets with self-weight and max load.</li>
+        <li><strong>Automatic stacking height</strong> — derived from container height and pallet rating.</li>
+        <li><strong>Payload validation</strong> — maximum weight enforced as you type.</li>
+        <li><strong>Fragile rules</strong> — nothing is ever placed on top of a fragile item.</li>
+        <li><strong>Rotation control</strong> — lock items upright when the product demands it.</li>
+        <li><strong>Door-opening limits</strong> — every piece is checked against the real door frame.</li>
+        <li><strong>Load order pick list</strong> — step-by-step sequence matching the 3D plan.</li>
+        <li><strong>Live statistics</strong> — fill rate, CBM used, total weight, piece and container count.</li>
+        <li><strong>PDF and image export</strong> — a print-ready A4 landscape sheet, or a high-resolution picture.</li>
+        <li><strong>Local plan history</strong> — save, reload and reuse previous calculations.</li>
+        <li><strong>Light and dark themes</strong> — or simply follow your system setting.</li>
+        <li><strong>15 languages</strong> — from English and 简体中文 to العربية and हिन्दी.</li>
+      </ul>
+    </div>
+
+    <h2 class="sec">Built-in equipment data</h2>
+    <p class="sec-sub">Real internal dimensions, door openings and payload ratings — ready to use, no lookup required.</p>
+
+    <div class="card">
+      <div class="tscroll">
+        <table>
+          <thead>
+            <tr><th>Container</th><th>Internal L×W×H (mm)</th><th>Door W×H (mm)</th><th>Max payload</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>20GP</td><td>5898 × 2352 × 2393</td><td>2340 × 2280</td><td>28,200 kg</td></tr>
+            <tr><td>40GP</td><td>12031 × 2352 × 2393</td><td>2340 × 2280</td><td>26,700 kg</td></tr>
+            <tr><td>40HQ</td><td>12031 × 2352 × 2698</td><td>2340 × 2585</td><td>26,580 kg</td></tr>
+            <tr><td>45HQ</td><td>13513 × 2352 × 2698</td><td>2340 × 2585</td><td>25,600 kg</td></tr>
+            <tr><td>20OT (open top)</td><td>5898 × 2352 × 2330</td><td>2340 × 2280</td><td>28,000 kg</td></tr>
+            <tr><td>40OT (open top)</td><td>12031 × 2352 × 2330</td><td>2340 × 2280</td><td>26,600 kg</td></tr>
+            <tr><td>20RF (reefer)</td><td>5450 × 2280 × 2260</td><td>2260 × 2240</td><td>26,400 kg</td></tr>
+            <tr><td>40RH (reefer)</td><td>11570 × 2280 × 2495</td><td>2260 × 2470</td><td>26,500 kg</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">Pallets included: 1200×1000, 1200×800, 1100×1100, 1140×1140, 1000×1200, 1219×1016, 1067×1067 and 1165×1165 — each with its own self-weight and rated load. Any container or pallet can be replaced with your own custom dimensions.</p>
+    </div>
+
+    <h2 class="sec">Who it is for</h2>
+    <p class="sec-sub">Freight forwarders, import and export managers, warehouse and loading supervisors, e-commerce sellers building pallets, and anyone who is tired of guessing whether the next carton will fit.</p>
+
+    <h2 class="sec">Speaks your language</h2>
+    <div class="langs">
+      <span class="lang">English</span>
+      <span class="lang">简体中文</span>
+      <span class="lang">日本語</span>
+      <span class="lang">한국어</span>
+      <span class="lang">Deutsch</span>
+      <span class="lang">Français</span>
+      <span class="lang">Español</span>
+      <span class="lang">Português</span>
+      <span class="lang">Русский</span>
+      <span class="lang">Italiano</span>
+      <span class="lang">العربية</span>
+      <span class="lang">Tiếng Việt</span>
+      <span class="lang">ไทย</span>
+      <span class="lang">Bahasa Indonesia</span>
+      <span class="lang">हिन्दी</span>
+    </div>
+
+    <div class="band">
+      <h2>Plan the load once. Stop paying for it every month.</h2>
+      <p>A single purchase, every feature unlocked, no subscription and no data collection. Available for iPhone and iPad.</p>
+      <a class="btn" href="https://apps.apple.com/app/id6812205911">View on the App Store</a>
+    </div>
+
+    <p class="note" style="margin-top:26px">Results are a planning aid. Always confirm axle loads, weight limits, lashing requirements and local transport regulations with your carrier and terminal before shipping.</p>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap foot">
+    <div>© 2026 3D Load Calculator. All rights reserved.</div>
+    <nav>
+      <a href="./marketing.html">Overview</a>
+      <a href="./support.html">Support</a>
+      <a href="./privacy-policy.html">Privacy Policy</a>
+      <a href="mailto:supportbx@163.com">Contact</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Technical Support — 3D Load Calculator</title>
+<meta name="description" content="Support, quick start guide and frequently asked questions for the 3D Load Calculator iOS app.">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --brand:#0A2F8C;--brand-2:#2563EB;
+  --ink:#0F1729;--ink-2:#4A5567;--ink-3:#6E7A8C;
+  --bg:#F5F7FB;--card:#FFFFFF;--line:#E4E8F0;--soft:#EEF2FB;
+  --radius:18px;--radius-sm:12px;
+  --shadow:0 1px 2px rgba(16,24,40,.04),0 8px 24px rgba(16,24,40,.06);
+  --max:900px;
+}
+@media (prefers-color-scheme:dark){
+  :root{--brand:#8FAEFF;--brand-2:#7FA0FF;
+    --ink:#E8ECF5;--ink-2:#A7B1C4;--ink-3:#8C97AB;
+    --bg:#0A1020;--card:#111A2E;--line:#222E48;--soft:#17203A;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);}
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","PingFang SC","Hiragino Sans","Microsoft YaHei",sans-serif;
+}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+a{color:var(--brand-2);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3{line-height:1.3;letter-spacing:-.01em}
+h1{font-size:clamp(28px,5vw,40px);margin:0 0 12px}
+h2{font-size:clamp(20px,3vw,24px);margin:44px 0 14px}
+h3{font-size:17px;margin:0}
+p{margin:0 0 14px;color:var(--ink-2)}
+header.site{border-bottom:1px solid var(--line);background:var(--card)}
+.head{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);font-weight:650;font-size:15px}
+.brand:hover{text-decoration:none}
+.brand svg{display:block;flex:none}
+nav{display:flex;gap:18px;font-size:14px;flex-wrap:wrap}
+nav a{color:var(--ink-3);font-weight:500}
+nav a[aria-current="page"]{color:var(--brand);font-weight:650}
+.hero{padding:52px 0 8px}
+.hero p.lead{font-size:18px;max-width:640px}
+.tag{display:inline-block;font-size:12px;font-weight:650;letter-spacing:.08em;text-transform:uppercase;color:var(--brand);background:var(--soft);border-radius:999px;padding:5px 12px;margin-bottom:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px;margin:16px 0}
+.card.contact{display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap}
+.card.contact .grow{flex:1;min-width:240px}
+.btn{display:inline-block;background:var(--brand);color:#fff;font-weight:650;font-size:15px;border-radius:12px;padding:12px 20px;margin-top:6px}
+.btn:hover{text-decoration:none;opacity:.92}
+@media (prefers-color-scheme:dark){.btn{color:#08122B}}
+.steps{counter-reset:s;list-style:none;padding:0;margin:0}
+.steps li{counter-increment:s;position:relative;padding:0 0 22px 52px;margin:0}
+.steps li::before{
+  content:counter(s);position:absolute;left:0;top:-2px;width:34px;height:34px;border-radius:11px;
+  background:var(--soft);color:var(--brand);font-weight:700;font-size:15px;
+  display:flex;align-items:center;justify-content:center;
+}
+.steps li:not(:last-child)::after{content:"";position:absolute;left:16px;top:36px;bottom:2px;width:2px;background:var(--line)}
+.steps strong{display:block;font-size:16px;margin-bottom:2px}
+.steps span{color:var(--ink-2);font-size:15px}
+details{border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--card);margin-bottom:10px;overflow:hidden}
+details[open]{box-shadow:var(--shadow)}
+summary{cursor:pointer;padding:16px 46px 16px 18px;font-weight:600;font-size:15.5px;position:relative;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:18px;top:50%;transform:translateY(-50%);color:var(--ink-3);font-weight:400;font-size:20px}
+details[open] summary::after{content:"–"}
+details .body{padding:0 18px 18px;color:var(--ink-2);font-size:15px;border-top:1px solid var(--line);padding-top:14px}
+details .body p:last-child{margin-bottom:0}
+ul.plain{margin:0 0 14px;padding-left:20px;color:var(--ink-2)}
+ul.plain li{margin-bottom:6px}
+footer.site{margin-top:56px;border-top:1px solid var(--line);background:var(--card)}
+.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:26px 20px;font-size:13.5px;color:var(--ink-3)}
+.foot a{color:var(--ink-3)}
+.foot nav{gap:16px}
+.note{font-size:14px;color:var(--ink-3)}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.92em;background:var(--soft);border-radius:6px;padding:2px 6px}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap head">
+    <a class="brand" href="./marketing.html">
+      <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 2 22 7.2v9.6L12 22 2 16.8V7.2z" fill="#0A2F8C"/>
+        <path d="M12 2 22 7.2 12 12.4 2 7.2z" fill="#3C63D8"/>
+        <path d="M12 12.4V22l10-5.2V7.2z" fill="#08246E" opacity=".85"/>
+      </svg>
+      <span>3D Load Calculator</span>
+    </a>
+    <nav>
+      <a href="./support.html" aria-current="page">Support</a>
+      <a href="./marketing.html">Overview</a>
+      <a href="./privacy-policy.html">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <span class="tag">Technical Support</span>
+    <h1>How can we help?</h1>
+    <p class="lead">Quick-start instructions, answers to the most common questions, and a direct line to us if something is not working as expected.</p>
+  </section>
+
+  <div class="card contact">
+    <div class="grow">
+      <h3>Email support</h3>
+      <p>Send us a message and we will get back to you, usually within two business days. We read every report — this app is built and supported by a small team.</p>
+      <p><a class="btn" href="mailto:supportbx@163.com?subject=3D%20Load%20Calculator%20—%20Support%20request">Email support</a></p>
+      <p class="note">Or write to <a href="mailto:supportbx@163.com">supportbx@163.com</a></p>
+    </div>
+  </div>
+
+  <h2>Quick start</h2>
+  <div class="card">
+    <ol class="steps">
+      <li>
+        <strong>Choose a container</strong>
+        <span>Tap <em>Container</em> in the bottom bar and pick one of the eight standard types, or choose <em>Custom</em> and enter your own internal dimensions, door opening and maximum payload.</span>
+      </li>
+      <li>
+        <strong>Add your cargo</strong>
+        <span>Tap <em>Add Cargo</em> and enter a name, length, width, height and quantity. Add a unit weight to switch on the payload check. You can mark items as fragile, lock out rotation, or give them priority near the door.</span>
+      </li>
+      <li>
+        <strong>Read the plan</strong>
+        <span>The 3D load is built instantly. Orbit and zoom to inspect it, tap any carton for its details, open the load order list for a step-by-step pick list, then export an image or a PDF — or save the plan to your local history.</span>
+      </li>
+    </ol>
+  </div>
+
+  <h2>Frequently asked questions</h2>
+
+  <details open>
+    <summary>Does the app need an internet connection?</summary>
+    <div class="body"><p>No. Every calculation, export and saved plan works completely offline. The app makes no network requests of any kind, which is also why it works on a factory floor, in a container yard or on a plane.</p></div>
+  </details>
+
+  <details>
+    <summary>Where is my data stored? Is anything uploaded?</summary>
+    <div class="body"><p>All settings and saved plans are stored locally on your device, in the app's private storage. Nothing is uploaded, synced or shared with us or with anyone else. Because of that, uninstalling the app also removes your saved plans.</p></div>
+  </details>
+
+  <details>
+    <summary>Can I move saved plans to a new iPhone or iPad?</summary>
+    <div class="body"><p>Plan history is stored on the device and is not synced between devices. If you are switching devices, export the plan as a PDF or image from the old device first — you can then recreate it quickly on the new one, since all container and pallet presets are built in.</p></div>
+  </details>
+
+  <details>
+    <summary>How do I export a PDF or a picture of the load?</summary>
+    <div class="body"><p>Use the toolbar on the right of the 3D view: <em>Export PDF</em> produces a print-ready A4 landscape sheet, and <em>Screenshot</em> produces a high-resolution image. Both hand off to the standard iOS share sheet, so you can save to Files or Photos, send by mail or chat, or pass the file to another app.</p></div>
+  </details>
+
+  <details>
+    <summary>Why does the app ask for access to my photos?</summary>
+    <div class="body"><p>Only so that you can save an exported image to your photo library. The app never reads, browses, collects or uploads your photos. If you never save an image, the permission is never used.</p></div>
+  </details>
+
+  <details>
+    <summary>Why do pallets never stack on top of each other?</summary>
+    <div class="body"><p>This is by design. Loaded pallets are treated as floor-only units so the result stays forklift-operable and safe to handle — real pallets are rarely stacked on one another in a container. The app stacks your <em>cargo</em> on the pallet instead, and derives the usable stacking height automatically from the container height and the pallet's rated load.</p></div>
+  </details>
+
+  <details>
+    <summary>Why is there a gap between the cargo and the container walls?</summary>
+    <div class="body"><p>A 50 mm wall clearance is applied on every side, and 50 mm is reserved between pallets for forklift access. This matches the space you need in practice for lashing and handling, so the plan is realistic rather than theoretical.</p></div>
+  </details>
+
+  <details>
+    <summary>What exactly does "fill rate" mean?</summary>
+    <div class="body"><p>Fill rate is the share of the container's usable volume that is actually occupied by cargo. It is calculated after the wall clearances are applied, so it reflects the space you can really use.</p></div>
+  </details>
+
+  <details>
+    <summary>Some of my cartons were not rotated. Why?</summary>
+    <div class="body"><p>Rotation is off unless you allow it, because many products must stay upright. Open the item with <em>More options</em> and turn on <em>Allow 90° rotation</em> to let the solver turn it. Items marked <em>Fragile</em> will never have anything placed on top of them.</p></div>
+  </details>
+
+  <details>
+    <summary>Why is the weight check not being applied?</summary>
+    <div class="body"><p>The payload check switches on as soon as you enter a unit weight for an item. Leave the weight empty and the app will not validate mass, which is useful when weight is not a constraint for that particular shipment.</p></div>
+  </details>
+
+  <details>
+    <summary>Can I use a non-standard container or pallet?</summary>
+    <div class="body"><p>Yes. Choose <em>Custom</em> for containers and enter the internal length, width and height plus the door opening and maximum payload. Custom pallets accept their own dimensions, self-weight and maximum load.</p></div>
+  </details>
+
+  <details>
+    <summary>How do I change the language or the theme?</summary>
+    <div class="body"><p>Open <em>Settings</em> from the main screen. You can pick one of 15 languages or follow your system language, and choose light, dark or system appearance.</p></div>
+  </details>
+
+  <details>
+    <summary>How do I delete everything and start fresh?</summary>
+    <div class="body"><p>Go to <em>Settings → Data → Clear All Records</em>. This deletes all saved plans and resets the current inputs to their defaults. It cannot be undone, so export anything you want to keep first.</p></div>
+  </details>
+
+  <details>
+    <summary>The app feels slow on a very large load. What can I do?</summary>
+    <div class="body"><p>Extremely large quantities — many thousands of pieces spread across many different sizes — take the solver longer, since it evaluates several packing strategies and keeps the best result. Reduce the quantity while you experiment, then set the final figure once the layout looks right.</p></div>
+  </details>
+
+  <h2>Reporting a problem</h2>
+  <div class="card">
+    <p>If something looks wrong, please include the following so we can reproduce it quickly:</p>
+    <ul class="plain">
+      <li>Your device model and iOS version.</li>
+      <li>The app version, shown in <em>Settings → About</em>.</li>
+      <li>The container type, the cargo dimensions and quantities you used.</li>
+      <li>What you expected to see, and what you saw instead.</li>
+      <li>A screenshot or an exported PDF, if you can share one.</li>
+    </ul>
+    <p class="note">Reports of incorrect loading plans are treated as the highest priority and are usually fixed in the next update.</p>
+  </div>
+
+  <h2>Planning disclaimer</h2>
+  <div class="card">
+    <p>This app is a planning aid. It helps you estimate how cargo fits, how full a container becomes and how heavy the load is. It does not replace the weight limits, axle-load rules, lashing requirements or local transport regulations that apply to your shipment. Always confirm the final load with your carrier and terminal before shipping.</p>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap foot">
+    <div>© 2026 3D Load Calculator. All rights reserved.</div>
+    <nav>
+      <a href="./support.html">Support</a>
+      <a href="./marketing.html">Overview</a>
+      <a href="./privacy-policy.html">Privacy Policy</a>
+      <a href="mailto:supportbx@163.com">Contact</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
