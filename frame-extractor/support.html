@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support — FrameGrab: Video to Photo</title>
+<meta name="description" content="Support for FrameGrab: Video to Photo. Get answers to common questions or email us directly.">
+<style>
+  :root{
+    --navy:#2C4A6E;
+    --navy-soft:rgba(44,74,110,.10);
+    --bg:#FFFFFF;
+    --surface:#F2F2F7;
+    --card:#FFFFFF;
+    --text:#000000;
+    --muted:#6B6B70;
+    --line:#E5E5EA;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --navy:#8FB4DC;
+      --navy-soft:rgba(143,180,220,.14);
+      --bg:#000000;
+      --surface:#1C1C1E;
+      --card:#1C1C1E;
+      --text:#FFFFFF;
+      --muted:#9A9AA0;
+      --line:#3A3A3C;
+    }
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font:16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{
+    border-bottom:1px solid var(--line);
+    position:sticky;top:0;
+    /* 兜底：不支持 color-mix 的旧浏览器用不透明底色 */
+    background:var(--bg);
+    background:color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter:saturate(180%) blur(12px);
+  }
+  header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:56px}
+  .brand{font-weight:700;letter-spacing:.2px;color:var(--text);text-decoration:none;font-size:17px}
+  nav a{color:var(--muted);text-decoration:none;font-size:15px;margin-left:18px}
+  nav a:hover{color:var(--navy)}
+  nav a[aria-current="page"]{color:var(--navy);font-weight:600}
+  main{padding:40px 0 56px}
+  h1{font-size:30px;line-height:1.25;margin:0 0 10px;letter-spacing:-.4px}
+  h2{font-size:20px;line-height:1.3;margin:36px 0 12px}
+  h3{font-size:16px;margin:0}
+  p{margin:0 0 14px}
+  .lede{color:var(--muted);font-size:17px;margin-bottom:26px}
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:20px 22px;
+    margin:0 0 28px;
+  }
+  .card.contact{background:var(--navy-soft);border-color:transparent}
+  .contact h2{margin-top:0}
+  .button{
+    display:inline-block;
+    background:var(--navy);
+    color:#FFFFFF;
+    text-decoration:none;
+    font-weight:600;
+    padding:13px 22px;
+    border-radius:999px;
+    margin-top:6px;
+  }
+  .contact .button{background:var(--navy)}
+  .contact p.small{color:var(--muted);font-size:14px;margin:12px 0 0}
+  details{
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:0 16px;
+    margin:0 0 10px;
+    background:var(--card);
+  }
+  details[open]{padding-bottom:14px}
+  summary{
+    cursor:pointer;
+    font-weight:600;
+    padding:14px 0;
+    list-style:none;
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+  }
+  summary::-webkit-details-marker{display:none}
+  summary::before{
+    content:"+";
+    color:var(--navy);
+    font-weight:700;
+    flex:0 0 auto;
+    width:16px;
+  }
+  details[open] summary::before{content:"–"}
+  details p, details ul{margin:0 0 10px;color:var(--muted)}
+  details p strong, details li strong{color:var(--text)}
+  ul{padding-left:22px;margin:0 0 14px}
+  li{margin-bottom:6px}
+  code{
+    font:14px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    background:var(--surface);
+    padding:2px 6px;
+    border-radius:6px;
+  }
+  footer{
+    border-top:1px solid var(--line);
+    padding:26px 0 44px;
+    color:var(--muted);
+    font-size:14px;
+  }
+  footer a{color:var(--muted);text-decoration:none;margin-right:16px}
+  footer a:hover{color:var(--navy)}
+  .footer-links{margin-bottom:10px}
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="marketing.html">FrameGrab</a>
+    <nav>
+      <a href="support.html" aria-current="page">Support</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="marketing.html">Overview</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>Support</h1>
+  <p class="lede">Help for FrameGrab: Video to Photo on iPhone and iPad.</p>
+
+  <section class="card contact">
+    <h2>Contact us</h2>
+    <p>Found a bug, need help with an import, or have an idea for a feature? Email us and we will get back to you. Including your iOS version and the app version from Settings helps us solve things faster.</p>
+    <a class="button" href="mailto:supportbx@163.com?subject=FrameGrab%20support">Email supportbx@163.com</a>
+    <p class="small">We aim to reply within 2 business days. Email is the only support channel, and it is also where feature requests are collected.</p>
+  </section>
+
+  <h2>Frequently asked questions</h2>
+
+  <details>
+    <summary>Which video formats can I import?</summary>
+    <p>FrameGrab reads the formats iOS itself can decode, including <strong>MP4, MOV, M4V and HEVC</strong> — the formats produced by iPhone, iPad, most cameras and most video apps. Files up to <strong>2 GB</strong> are supported.</p>
+    <p>If a video will not load, it is usually a container or codec iOS cannot decode (some MKV or AVI files, for example). Converting it to MP4 or MOV on a computer and importing again will normally fix it.</p>
+  </details>
+
+  <details>
+    <summary>How do I import a video?</summary>
+    <p>Three ways, all from the home screen:</p>
+    <ul>
+      <li><strong>Photos</strong> — pick any video from your photo library.</li>
+      <li><strong>Files</strong> — pick a video stored in iCloud Drive, On My iPhone or another file provider.</li>
+      <li><strong>Share sheet</strong> — in another app, tap Share and choose FrameGrab. The video opens straight into the extraction screen.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>How do I capture a frame at an exact moment?</summary>
+    <p>Open <strong>Advanced</strong> on the extraction screen and use the <strong>Timecode</strong> field to type an exact position in <code>hh:mm:ss.SSS</code> format. The two arrows next to it step one frame backward or forward — press and hold them to fine-tune continuously.</p>
+  </details>
+
+  <details>
+    <summary>Why is batch extraction limited to 100 frames per run?</summary>
+    <p>Full-resolution frames are large, and every frame is decoded and written to disk. The 100-frame limit keeps a single run predictable in time, memory and storage, and prevents very long or high-resolution videos from overwhelming the device.</p>
+    <p>Need more? Run the batch again over the next section of the video — for example extract 0:00–0:20, then 0:20–0:40. Frames already extracted are kept in the gallery.</p>
+  </details>
+
+  <details>
+    <summary>Can I extract frames by frame rate instead of by interval?</summary>
+    <p>Yes. In <strong>Advanced</strong>, switch the method from <strong>By interval</strong> to <strong>By frame rate</strong> and enter the target fps. This is useful when you want a fixed number of frames per second regardless of the spacing you would otherwise pick by hand.</p>
+  </details>
+
+  <details>
+    <summary>I cannot save frames to Photos.</summary>
+    <p>Saving requires photo-library permission. Open <strong>Settings → Privacy &amp; Security → Photos → FrameGrab</strong> (or <strong>Settings → FrameGrab → Photos</strong>) and choose <strong>Add Photos Only</strong> or <strong>Full Access</strong>, then try again.</p>
+    <p>If a batch partially fails, the app retries automatically. Frames that still fail can be saved again from the gallery.</p>
+  </details>
+
+  <details>
+    <summary>Where are my frames stored, and does the app fill up my storage?</summary>
+    <p>Extracted frames live inside the app until you save them to Photos or delete them. Imported video copies are temporary and are removed automatically after <strong>7 days</strong> of inactivity to free space.</p>
+    <p>To check or clear space: open <strong>Settings → Storage</strong>. It shows how much space frames and temporary files use, and <strong>Clear all extracted frames</strong> removes everything in one step. Images already saved to Photos are never touched.</p>
+  </details>
+
+  <details>
+    <summary>How do I delete a frame or a whole selection?</summary>
+    <p>In the gallery, <strong>swipe left</strong> on a thumbnail to delete that frame. For several at once, tap <strong>Select</strong>, choose the frames (or <strong>Select all</strong>), then tap <strong>Delete</strong>. Deletions inside the app do not affect anything you have already saved to Photos.</p>
+  </details>
+
+  <details>
+    <summary>What is the History screen for?</summary>
+    <p>Imported videos are listed there so you can return later and extract more frames without importing again. Removing an entry deletes the app's local copy of that video to free space — the frames you already extracted are kept.</p>
+  </details>
+
+  <details>
+    <summary>FrameGrab does not appear when I share a video from another app.</summary>
+    <p>Only <strong>video files</strong> can be shared into FrameGrab, so the app appears in the share sheet for videos rather than for text, links or documents. If a particular app shares video in an unusual way, use <strong>Choose from Photos</strong> or <strong>Choose from Files</strong> instead — the result is identical.</p>
+  </details>
+
+  <details>
+    <summary>Do my videos get uploaded anywhere?</summary>
+    <p>No. Decoding, frame extraction and saving all happen on your device. FrameGrab has no accounts, no analytics, no advertising SDKs and no servers, and it works in airplane mode. See the <a href="privacy.html">Privacy Policy</a> for details.</p>
+  </details>
+
+  <details>
+    <summary>Which languages and appearance options are available?</summary>
+    <p>The interface is available in 11 languages — English, Simplified Chinese, Traditional Chinese, Japanese, Korean, Spanish, French, German, Portuguese, Russian and Italian — and follows your system language by default. Light and dark appearance can follow the system or be set manually in Settings.</p>
+  </details>
+
+  <details>
+    <summary>Does FrameGrab edit or convert video?</summary>
+    <p>No. FrameGrab exports still images only. It does not trim, record, re-encode or convert video files.</p>
+  </details>
+
+  <h2>Before you write to us</h2>
+  <div class="card">
+    <ul>
+      <li>Note your <strong>iOS version</strong> (Settings → General → About) and the <strong>app version</strong> (Settings → Version inside FrameGrab).</li>
+      <li>Describe what you did, what you expected, and what happened instead.</li>
+      <li>If a specific video fails, mention its format, size and where it came from (Photos, Files, or a shared file) — without sending the video itself.</li>
+      <li>The in-app <strong>Settings → Send feedback</strong> form fills all of this in for you and opens your mail app.</li>
+    </ul>
+  </div>
+
+  <h2>Report a problem or request a feature</h2>
+  <p>The fastest route is the built-in feedback form: open FrameGrab, go to <strong>Settings</strong>, and tap <strong>Send feedback</strong>. Your message is prepared in your own mail app, so you can review it before sending. You can also email <a href="mailto:supportbx@163.com">supportbx@163.com</a> directly.</p>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-links">
+      <a href="marketing.html">Overview</a>
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy Policy</a>
+    </div>
+    <div>FrameGrab: Video to Photo — version 1.0. Last updated September 16, 2026.</div>
+  </div>
+</footer>
+</body>
+</html>
