@@ -90,11 +90,16 @@
     <li>The ports you scanned are closed or filtered on that device.</li>
     <li>You are not on the same subnet as the target.</li>
     <li>The timeout is too short for a slow network — try the <em>Steady</em> speed profile.</li>
+    <li>
+      In Fast mode the app checks a few common ports (80, 443, 22, 445, 8080) to decide whether a
+      host is live. A device that blocks all of them may look offline — switch to Full mode to scan
+      it directly.
+    </li>
   </ul>
 
   <h3>How can I make a scan faster or more thorough?</h3>
   <ul>
-    <li><strong>Fast mode</strong> probes hosts first and scans only live ones — best for large subnets.</li>
+    <li><strong>Fast mode</strong> probes hosts first over TCP and scans only live ones — best for large subnets.</li>
     <li><strong>Full mode</strong> skips probing and scans every target for the most complete result.</li>
     <li>Use the <em>Steady</em>, <em>Balanced</em> or <em>Fast</em> speed profiles to trade reliability for speed.</li>
   </ul>
