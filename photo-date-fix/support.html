@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support — Photo Date Fix</title>
+<meta name="description" content="Support, troubleshooting and frequently asked questions for Photo Date Fix, the fully offline bulk EXIF timestamp editor for iPhone and iPad.">
+<style>
+  :root {
+    --blue: #007AFF;
+    --blue-dark: #0060d0;
+    --tint: #ECF4FF;
+    --text: #1c1c1e;
+    --text-2: #6b6b70;
+    --line: #e3e3e8;
+    --card: #ffffff;
+    --bg: #f7f8fa;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  a { color: var(--blue); }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 20px 72px; }
+
+  header.site {
+    background: var(--tint);
+    border-bottom: 1px solid var(--line);
+  }
+  header.site .wrap {
+    padding-top: 28px;
+    padding-bottom: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 20px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .brand { font-size: 20px; font-weight: 700; letter-spacing: -0.2px; }
+  .brand span { color: var(--blue); }
+  nav.top a {
+    margin-left: 18px;
+    font-size: 15px;
+    text-decoration: none;
+    color: var(--text-2);
+  }
+  nav.top a:first-child { margin-left: 0; }
+  nav.top a:hover, nav.top a[aria-current="page"] { color: var(--blue); }
+
+  h1 { font-size: 34px; line-height: 1.2; margin: 40px 0 10px; letter-spacing: -0.6px; }
+  .lede { font-size: 19px; color: var(--text-2); margin: 0 0 32px; }
+  h2 { font-size: 22px; margin: 44px 0 12px; letter-spacing: -0.3px; }
+  h3 { font-size: 17px; margin: 26px 0 6px; }
+  p { margin: 0 0 14px; }
+  ul, ol { margin: 0 0 16px; padding-left: 22px; }
+  li { margin: 0 0 8px; }
+  code {
+    background: #eef0f4;
+    border-radius: 5px;
+    padding: 1px 6px;
+    font-size: 15px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 22px 24px;
+    margin: 0 0 18px;
+  }
+  .contact { border-left: 4px solid var(--blue); }
+  .contact p:last-child { margin-bottom: 0; }
+
+  details {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 0 20px;
+    margin: 0 0 10px;
+  }
+  details[open] { padding-bottom: 16px; }
+  summary {
+    cursor: pointer;
+    font-weight: 600;
+    padding: 16px 0;
+    list-style: none;
+    position: relative;
+    padding-right: 28px;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after {
+    content: "+";
+    position: absolute;
+    right: 2px;
+    top: 15px;
+    color: var(--blue);
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1;
+  }
+  details[open] summary::after { content: "\2013"; }
+  details p:last-child, details ul:last-child { margin-bottom: 0; }
+
+  .steps { counter-reset: step; list-style: none; padding: 0; }
+  .steps li {
+    counter-increment: step;
+    position: relative;
+    padding-left: 44px;
+    margin-bottom: 14px;
+  }
+  .steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--tint);
+    color: var(--blue);
+    font-size: 15px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  footer.site {
+    border-top: 1px solid var(--line);
+    margin-top: 56px;
+    padding-top: 24px;
+    font-size: 15px;
+    color: var(--text-2);
+  }
+  footer.site a { margin-right: 16px; }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --text: #f2f2f7;
+      --text-2: #9d9da3;
+      --line: #2c2c31;
+      --card: #1c1c1f;
+      --bg: #0f0f11;
+      --tint: #12233a;
+    }
+    code { background: #26262b; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <div class="brand">Photo <span>Date Fix</span></div>
+    <nav class="top">
+      <a href="support.html" aria-current="page">Support</a>
+      <a href="marketing.html">Overview</a>
+      <a href="privacy.html">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <h1>Support</h1>
+  <p class="lede">Everything you need to get Photo Date Fix working — plus honest answers about what iOS does and does not allow this app to change.</p>
+
+  <div class="card contact">
+    <h2 style="margin-top:0">Contact us</h2>
+    <p>Questions, bug reports or feature requests are welcome. Email us at <a href="mailto:supportbx@163.com">supportbx@163.com</a>.</p>
+    <p>To help us solve your issue quickly, please include your iOS version, your device model, the app version shown on the Settings screen, and a short description of what happened.</p>
+  </div>
+
+  <h2>Getting started</h2>
+  <ol class="steps">
+    <li>Open the app and choose one of the three tools: <strong>Shift Time</strong>, <strong>Extract Date From Filename</strong> or <strong>Set Fixed Date &amp; Time</strong>.</li>
+    <li>Allow access to your photo library when iOS asks. The app needs read access to open photos and add access to save the processed copies.</li>
+    <li>Select the photos you want to fix, then tap Continue.</li>
+    <li>Confirm the settings and tap Start Processing. Keep the app open until the report appears.</li>
+    <li>Review the report, then tap Back to Home or Open Photos app to find your new copies.</li>
+  </ol>
+
+  <h2>Frequently asked questions</h2>
+
+  <details>
+    <summary>Where are my processed photos saved?</summary>
+    <p>Every processed photo is saved into your photo library as a <strong>new copy</strong>. The app also shows the exact count of saved copies on the result screen, and the Open Photos app button takes you straight to your library.</p>
+    <p>Your original photos are never modified, renamed or deleted.</p>
+  </details>
+
+  <details>
+    <summary>Why does the app change the capture time but not the file creation date?</summary>
+    <p>The app writes the EXIF <code>DateTimeOriginal</code> field, which is the capture timestamp your photo library uses for sorting. iOS does not expose any API that lets a third-party app rewrite a photo asset's file-system creation date, so that value cannot be changed by any app on the App Store.</p>
+  </details>
+
+  <details>
+    <summary>My photo was skipped. Why?</summary>
+    <p>A photo is skipped rather than guessed at. The most common reasons are:</p>
+    <ul>
+      <li><strong>No date in the filename</strong> — for Extract Date From Filename, the app only proceeds when it finds a real date. It never invents one.</li>
+      <li><strong>No existing capture time</strong> — shifting time requires a starting point, so a photo with no EXIF capture timestamp cannot be shifted.</li>
+      <li><strong>Unsupported format</strong> — PNG, GIF, ProRAW and DNG are not supported.</li>
+      <li><strong>The photo is only stored in iCloud</strong> — download it to the device first, then run the task again.</li>
+    </ul>
+    <p>Each skipped photo is listed on the result screen with its own reason, so you always know exactly what happened.</p>
+  </details>
+
+  <details>
+    <summary>My photo was reported as failed. Why?</summary>
+    <p>A failure means the app could not produce a verified copy. After writing a new timestamp, the app reads the value back. If it does not match exactly, the output file is discarded and reported as failed — this guarantees you never end up with a duplicate that silently carries the wrong time.</p>
+    <p>Most failures come from a photo that cannot be decoded, or from temporary storage being full. Free up some space and try again, and email us the file name if the problem repeats.</p>
+  </details>
+
+  <details>
+    <summary>Why can't I select my iCloud photos?</summary>
+    <p>Photos that exist only in iCloud are marked with a cloud icon and cannot be selected, because processing must happen entirely on your device. Open the photo in the Photos app so iOS downloads it, then return to Photo Date Fix and select it.</p>
+  </details>
+
+  <details>
+    <summary>How are Live Photos handled?</summary>
+    <p>For a Live Photo, only the still image's metadata is updated. The paired video is not included in the processed copy. Live Photos are only partially supported.</p>
+  </details>
+
+  <details>
+    <summary>Which filename date formats are recognised?</summary>
+    <p><code>YYYY-MM-DD</code>, <code>YYYYMMDD</code>, <code>YYYY_MM_DD</code>, <code>YYYY.MM.DD</code> and <code>YYYYMMDD-HHMMSS</code>.</p>
+    <p>When a filename contains only a date and no time, the app fills in the fallback time. You can change that fallback in Advanced Options on the home screen; the default is 12:00:00.</p>
+  </details>
+
+  <details>
+    <summary>Does a time shift handle daylight saving time correctly?</summary>
+    <p>Yes. The shift is applied to the timestamp value itself, so adding three hours always adds three hours, regardless of daylight saving changes. The app adjusts the absolute time value you specify and never applies a time zone of its own.</p>
+  </details>
+
+  <details>
+    <summary>Do the app's timestamps include a time zone?</summary>
+    <p>No. The EXIF capture timestamp format has no time-zone field at all. The app writes the exact absolute time you configure, in the format <code>yyyy:MM:dd HH:mm:ss</code>.</p>
+  </details>
+
+  <details>
+    <summary>How large a batch can I process?</summary>
+    <p>There is no fixed limit. Photos are processed in small chunks so the interface stays responsive, and you can cancel at any point. For large batches, keep the app open while processing runs and give it a moment on slower devices.</p>
+  </details>
+
+  <details>
+    <summary>What happens if I cancel in the middle of a batch?</summary>
+    <p>Copies that were already saved stay in your library, and photos that had not been processed yet are left completely untouched. Nothing is ever left half-written, because every copy is verified before it is saved.</p>
+  </details>
+
+  <details>
+    <summary>What is saved in Advanced Options?</summary>
+    <p>Two global defaults: the fallback time used when a filename contains only a date, and the output quality of saved copies. They are stored locally on your device and reused by every task.</p>
+  </details>
+
+  <details>
+    <summary>Does the app work in Airplane Mode?</summary>
+    <p>Yes — it works exactly the same, because the app makes no network requests at all. It has no network permission, no analytics, no tracking and no advertising. Your photos are processed entirely on your device and never leave it.</p>
+  </details>
+
+  <details>
+    <summary>Which languages are supported?</summary>
+    <p>English, Simplified Chinese, Traditional Chinese, Japanese, Korean, Spanish, French, German, Portuguese, Russian and Italian. The app follows your device language by default, and you can override it on the Settings screen.</p>
+  </details>
+
+  <h2>Troubleshooting</h2>
+
+  <h3>The app cannot see my photos</h3>
+  <p>Open iOS Settings, find Photo Date Fix, and set Photos access to <em>All Photos</em>. If access was previously denied, the app will offer a shortcut to the system settings.</p>
+
+  <h3>Nothing happened when I tapped Start Processing</h3>
+  <p>Make sure at least one photo is selected. If every selected photo was skipped, the report screen will explain why for each one.</p>
+
+  <h3>Processing feels slow on a very large selection</h3>
+  <p>Each photo is decoded, rewritten and re-verified on the device, with no server involved. This is the cost of never uploading your library anywhere. Processing a smaller batch at a time is a good option.</p>
+
+  <h3>I want to start over</h3>
+  <p>Delete the new copies from your photo library — they are separate assets and deleting them does not affect the originals.</p>
+
+  <h2>System requirements</h2>
+  <ul>
+    <li>iPhone or iPad</li>
+    <li>Photo library read and add permission only — no other permissions are requested</li>
+    <li>Supported photo formats: JPEG and HEIC</li>
+  </ul>
+
+  <h2>Reporting a problem</h2>
+  <p>Email <a href="mailto:supportbx@163.com">supportbx@163.com</a> with the affected file name, your iOS version and your app version. Because the app collects no analytics and no crash reports by design, your message is the only way we can see what went wrong — and it is very much appreciated.</p>
+
+  <footer class="site">
+    <a href="support.html">Support</a>
+    <a href="marketing.html">Overview</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <p>Photo Date Fix — Bulk EXIF Timestamp Editor. Last updated 18 September 2026.</p>
+  </footer>
+
+</main>
+</body>
+</html>

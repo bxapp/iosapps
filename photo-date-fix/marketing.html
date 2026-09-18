@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Photo Date Fix — Fix wrong photo timestamps, 100% offline</title>
+<meta name="description" content="Bulk EXIF timestamp editor for iPhone and iPad. Shift time zones, extract dates from filenames, set a fixed capture time. Zero network permission, no tracking, no ads.">
+<style>
+  :root {
+    --blue: #007AFF;
+    --tint: #ECF4FF;
+    --text: #1c1c1e;
+    --text-2: #63636a;
+    --line: #e3e3e8;
+    --card: #ffffff;
+    --bg: #ffffff;
+    --ok: #1a7f47;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 17px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  a { color: var(--blue); }
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 0 22px; }
+  .narrow { max-width: 720px; }
+
+  header.site { border-bottom: 1px solid var(--line); }
+  header.site .wrap {
+    padding-top: 20px; padding-bottom: 20px;
+    display: flex; flex-wrap: wrap; gap: 12px 20px;
+    align-items: center; justify-content: space-between;
+  }
+  .brand { font-size: 20px; font-weight: 700; letter-spacing: -0.2px; }
+  .brand span { color: var(--blue); }
+  nav.top a { margin-left: 18px; font-size: 15px; text-decoration: none; color: var(--text-2); }
+  nav.top a:first-child { margin-left: 0; }
+  nav.top a:hover, nav.top a[aria-current="page"] { color: var(--blue); }
+
+  .hero {
+    background: linear-gradient(180deg, var(--tint) 0%, var(--bg) 100%);
+    border-bottom: 1px solid var(--line);
+    padding: 72px 0 64px;
+    text-align: center;
+  }
+  .kicker {
+    display: inline-block;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 6px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--blue);
+    margin-bottom: 22px;
+  }
+  h1 { font-size: 46px; line-height: 1.12; margin: 0 auto 18px; max-width: 15em; letter-spacing: -1.2px; }
+  .sub { font-size: 20px; color: var(--text-2); margin: 0 auto 34px; max-width: 34em; }
+
+  .cta {
+    display: inline-block;
+    background: var(--blue);
+    color: #fff;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 600;
+    padding: 15px 34px;
+    border-radius: 999px;
+  }
+  .cta:hover { background: #0069dd; }
+  .cta-note { font-size: 14px; color: var(--text-2); margin: 14px 0 0; }
+
+  section { padding: 64px 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type { border-bottom: 0; }
+  h2 { font-size: 32px; margin: 0 0 10px; letter-spacing: -0.7px; text-align: center; }
+  .section-sub { text-align: center; color: var(--text-2); font-size: 19px; margin: 0 auto 44px; max-width: 32em; }
+  h3 { font-size: 20px; margin: 0 0 8px; letter-spacing: -0.2px; }
+
+  .grid { display: grid; gap: 20px; grid-template-columns: repeat(3, 1fr); }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 26px 24px;
+  }
+  .card p { margin: 0; color: var(--text-2); font-size: 16px; }
+  .num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 34px; height: 34px; border-radius: 10px;
+    background: var(--tint); color: var(--blue);
+    font-weight: 700; font-size: 16px; margin-bottom: 14px;
+  }
+
+  .split { display: grid; gap: 48px; grid-template-columns: 1fr 1fr; align-items: start; }
+  .split h2 { text-align: left; }
+  .checks { list-style: none; padding: 0; margin: 0; }
+  .checks li { position: relative; padding-left: 32px; margin-bottom: 14px; }
+  .checks li::before {
+    content: "";
+    position: absolute; left: 0; top: 4px;
+    width: 18px; height: 18px; border-radius: 50%;
+    background: var(--ok);
+  }
+  .checks li::after {
+    content: "";
+    position: absolute; left: 6px; top: 9px;
+    width: 5px; height: 9px;
+    border-right: 2px solid #fff; border-bottom: 2px solid #fff;
+    transform: rotate(45deg);
+  }
+  .muted { color: var(--text-2); font-size: 16px; }
+
+  .limits { list-style: none; padding: 0; margin: 0; }
+  .limits li { padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 16px; }
+  .limits li:last-child { border-bottom: 0; }
+  .limits strong { display: block; margin-bottom: 2px; }
+
+  .steps { display: grid; gap: 20px; grid-template-columns: repeat(3, 1fr); }
+  .step { text-align: center; }
+  .step .dot {
+    width: 46px; height: 46px; border-radius: 50%;
+    background: var(--tint); color: var(--blue);
+    font-weight: 700; font-size: 18px;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 14px;
+  }
+
+  .final { text-align: center; background: var(--tint); border-radius: 20px; padding: 56px 30px; }
+  .final h2 { margin-bottom: 12px; }
+  .final p { color: var(--text-2); font-size: 19px; margin: 0 auto 30px; max-width: 30em; }
+
+  footer.site {
+    border-top: 1px solid var(--line);
+    margin-top: 56px; padding: 28px 0 60px;
+    font-size: 15px; color: var(--text-2);
+  }
+  footer.site a { margin-right: 18px; }
+
+  @media (max-width: 800px) {
+    .grid, .steps, .split { grid-template-columns: 1fr; }
+    h1 { font-size: 34px; letter-spacing: -0.8px; }
+    .sub { font-size: 18px; }
+    h2 { font-size: 26px; }
+    .hero { padding: 52px 0 46px; }
+    section { padding: 48px 0; }
+    .split { gap: 28px; }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --text: #f2f2f7; --text-2: #9d9da3; --line: #2c2c31;
+      --card: #1c1c1f; --bg: #0f0f11; --tint: #12233a; --ok: #4cc27e;
+    }
+    .kicker { background: #14243c; }
+    .cta { color: #fff; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <div class="brand">Photo <span>Date Fix</span></div>
+    <nav class="top">
+      <a href="support.html">Support</a>
+      <a href="marketing.html" aria-current="page">Overview</a>
+      <a href="privacy.html">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="kicker">100% offline · Zero network permission</div>
+    <h1>Fix wrong photo timestamps in seconds.</h1>
+    <p class="sub">A bulk EXIF capture-time editor for iPhone and iPad. Shift time zones, pull dates out of filenames, and assign a fixed date to a whole batch — entirely on your device.</p>
+    <!-- Replace the href below with your live App Store URL after approval. -->
+    <a class="cta" href="https://apps.apple.com/app/id0000000000">Download on the App Store</a>
+    <p class="cta-note">One-time purchase · No subscription · No ads · No in-app purchases</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>Three tools, one purpose: a photo timeline you can trust</h2>
+    <p class="section-sub">Pick the tool that matches the problem, select your photos, and let the app do the rest.</p>
+    <div class="grid">
+      <div class="card">
+        <div class="num">1</div>
+        <h3>Shift Time</h3>
+        <p>Add or subtract days, hours and minutes across an entire selection at once. The one-tap fix for travel photos shot on a camera set to the wrong time zone.</p>
+      </div>
+      <div class="card">
+        <div class="num">2</div>
+        <h3>Extract Date From Filename</h3>
+        <p>Reads the date already written in a filename and writes it into the capture time. Built for scanned film, exported edits and photos rescued from old backups.</p>
+      </div>
+      <div class="card">
+        <div class="num">3</div>
+        <h3>Set Fixed Date &amp; Time</h3>
+        <p>Assign one exact capture time to a whole selection. Ideal for scanned albums, documents and archive material.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap split">
+    <div>
+      <h2>Your photos never leave your iPhone</h2>
+      <p class="muted">Most utilities ask you to trust them. This one does not need your trust, because there is nothing to trust it with: the app has no networking capability at all.</p>
+      <p class="muted">There is no account to create, no upload step, and no server on our side — none exists. Turn on Airplane Mode and everything works exactly the same.</p>
+    </div>
+    <div>
+      <ul class="checks">
+        <li>Zero network permission — the app never connects to the internet</li>
+        <li>No analytics, no tracking, no advertising, no profiling</li>
+        <li>No crash-reporting SDK bundled</li>
+        <li>No account, no sign-up, no personal data requested</li>
+        <li>Photo library permission only — nothing else asked for</li>
+        <li>Privacy Manifest declares an empty list of collected data types</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap narrow">
+    <h2>Your originals are protected by design</h2>
+    <p class="section-sub">Editing photos should never put your library at risk.</p>
+    <ul class="checks">
+      <li><strong>Originals are never modified.</strong> Every processed photo is saved as a new, separate copy.</li>
+      <li><strong>Every write is verified.</strong> The new timestamp is read back and compared before the copy is saved. If it does not match exactly, the output is discarded and reported as failed — you never get a silently corrupted duplicate.</li>
+      <li><strong>Cancel any time.</strong> Finished copies are kept, and photos that had not been processed yet stay completely untouched.</li>
+      <li><strong>Nothing is a mystery.</strong> The final report shows how many photos were saved, skipped and failed, with a plain reason for each one.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Simple enough for anyone</h2>
+    <p class="section-sub">No tutorial, no learning curve, no account.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="dot">1</div>
+        <h3>Choose a tool</h3>
+        <p class="muted">Three clear options on the home screen.</p>
+      </div>
+      <div class="step">
+        <div class="dot">2</div>
+        <h3>Select photos</h3>
+        <p class="muted">Multi-select grid that feels like the Photos app.</p>
+      </div>
+      <div class="step">
+        <div class="dot">3</div>
+        <h3>Tap start</h3>
+        <p class="muted">Watch the progress, then read a clear report.</p>
+      </div>
+    </div>
+    <p class="section-sub" style="margin-top:38px;margin-bottom:0">Photographers who want more can open <strong>Advanced Options</strong> to control the fallback time used for filename parsing and the output quality of saved copies.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap split">
+    <div>
+      <h2>Good to know before you buy</h2>
+      <p class="muted">We would rather explain iOS's limits up front than surprise you later. This is exactly what the app can and cannot do.</p>
+    </div>
+    <div>
+      <ul class="limits">
+        <li><strong>Only the EXIF capture timestamp changes</strong>iOS does not allow any app to rewrite a photo's file-system creation date.</li>
+        <li><strong>Output is always a new copy</strong>Your original file stays exactly as it was.</li>
+        <li><strong>JPEG and HEIC are supported</strong>PNG, GIF, ProRAW and DNG are not.</li>
+        <li><strong>Live Photos are partially supported</strong>Only the still image's metadata is updated; the paired video is not included in the copy.</li>
+        <li><strong>iCloud-only photos must be downloaded first</strong>Processing happens on your device, so the file has to be local.</li>
+        <li><strong>EXIF timestamps carry no time zone</strong>The app adjusts the absolute time value you specify.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="final">
+      <h2>Wrong photo timeline? Fix it in one batch.</h2>
+      <p>Available in English, Simplified Chinese, Traditional Chinese, Japanese, Korean, Spanish, French, German, Portuguese, Russian and Italian.</p>
+      <a class="cta" href="https://apps.apple.com/app/id0000000000">Download on the App Store</a>
+      <p class="cta-note">iPhone and iPad · One-time purchase · Completely offline</p>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <a href="support.html">Support</a>
+    <a href="marketing.html">Overview</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <p>Photo Date Fix — Bulk EXIF Timestamp Editor. Last updated 18 September 2026.</p>
+  </div>
+</footer>
+
+</body>
+</html>
