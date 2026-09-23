@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ScanPDF Pro — Offline document scanner for iOS and iPadOS</title>
+<meta name="description" content="ScanPDF Pro scans documents to PDF entirely on your device. One-time purchase, no subscription, no ads, no tracking, no account.">
+<style>
+  :root{
+    color-scheme: light dark;
+    --bg:#ffffff; --fg:#1c1c1e; --muted:#6b6b70; --card:#f5f5f7; --line:#e3e3e8;
+    --accent:#007aff; --accent-soft:rgba(0,122,255,.10); --green:#34c759;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#000000; --fg:#f5f5f7; --muted:#98989e; --card:#1c1c1e; --line:#2c2c2e;
+           --accent:#0a84ff; --accent-soft:rgba(10,132,255,.16); --green:#30d158; }
+  }
+  *{ box-sizing:border-box; }
+  html{ -webkit-text-size-adjust:100%; }
+  body{
+    margin:0; background:var(--bg); color:var(--fg);
+    font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  .wrap{ max-width:760px; margin:0 auto; padding:56px 24px 72px; }
+
+  .brand{ display:flex; align-items:center; gap:12px; margin:0 0 34px; }
+  .mark{ width:34px; height:34px; border-radius:9px; background:var(--accent); color:#fff;
+         display:flex; align-items:center; justify-content:center; font-weight:700; font-size:17px; }
+  .brand span{ font-weight:600; }
+
+  h1{ font-size:38px; line-height:1.18; letter-spacing:-.03em; margin:0 0 14px; }
+  .tagline{ font-size:19px; color:var(--muted); margin:0 0 26px; max-width:34em; }
+
+  .pills{ display:flex; flex-wrap:wrap; gap:8px; margin:0 0 34px; padding:0; list-style:none; }
+  .pills li{
+    font-size:14px; font-weight:600; padding:7px 13px; border-radius:999px;
+    background:var(--accent-soft); color:var(--accent);
+  }
+
+  .cta{
+    display:inline-block; background:var(--accent); color:#fff; font-weight:600;
+    padding:13px 24px; border-radius:999px; text-decoration:none; font-size:16px;
+  }
+  .cta:hover{ opacity:.9; }
+
+  h2{ font-size:22px; letter-spacing:-.02em; margin:52px 0 6px; }
+  .sub{ color:var(--muted); margin:0 0 18px; }
+
+  .grid{ display:grid; gap:14px; grid-template-columns:1fr; }
+  @media (min-width:620px){ .grid.two{ grid-template-columns:1fr 1fr; } }
+  .card{ background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px 20px; }
+  .card h3{ margin:0 0 6px; font-size:16px; letter-spacing:-.01em; }
+  .card p{ margin:0; color:var(--muted); font-size:15px; }
+
+  ul.plain{ margin:0; padding-left:20px; }
+  ul.plain li{ margin:6px 0; }
+  ul.plain li b{ font-weight:600; color:var(--fg); }
+
+  footer{ margin-top:56px; padding-top:20px; border-top:1px solid var(--line); color:var(--muted); font-size:14px; }
+  a{ color:var(--accent); text-decoration:none; }
+  a:hover{ text-decoration:underline; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="brand">
+    <div class="mark">S</div>
+    <span>ScanPDF Pro</span>
+  </div>
+
+  <h1>A document scanner that never phones home.</h1>
+  <p class="tagline">
+    Turn paper into clean, correctly cropped PDFs — entirely on your device.
+    Pay once, keep it forever. No subscription, no ads, no tracking, no account.
+  </p>
+
+  <ul class="pills">
+    <li>100% offline</li>
+    <li>One-time purchase</li>
+    <li>No ads</li>
+    <li>No tracking</li>
+    <li>No sign-up</li>
+  </ul>
+
+  <!-- TODO: replace the placeholder id below with your real App Store link before publishing -->
+  <a class="cta" href="https://apps.apple.com/app/id0000000000">Download on the App Store</a>
+
+  <h2>Scan</h2>
+  <p class="sub">Point, shoot, done.</p>
+  <div class="grid two">
+    <div class="card">
+      <h3>Automatic edge detection</h3>
+      <p>A live outline tracks the page while you frame it, so you know it is straight before you capture.</p>
+    </div>
+    <div class="card">
+      <h3>Multi-page capture</h3>
+      <p>Keep the shutter going and scan a whole stack without leaving the camera.</p>
+    </div>
+    <div class="card">
+      <h3>Import from Photos</h3>
+      <p>Already have pictures? Bring them in and let the app find the document edges for you.</p>
+    </div>
+    <div class="card">
+      <h3>Retake in place</h3>
+      <p>Not happy with one page? Reshoot it and it drops straight back into its position.</p>
+    </div>
+  </div>
+
+  <h2>Fix and polish</h2>
+  <p class="sub">Straight edges, readable text.</p>
+  <div class="grid two">
+    <div class="card">
+      <h3>Manual corner adjust</h3>
+      <p>Drag any corner with a magnifier for precision, with snapping to detected edges, and watch the perspective result update instantly.</p>
+    </div>
+    <div class="card">
+      <h3>Six filters</h3>
+      <p>Original, Document, Black &amp; White, Grayscale, Cool and Warm — pick the look that keeps your text sharp.</p>
+    </div>
+    <div class="card">
+      <h3>Rotate</h3>
+      <p>One tap straightens pages that were scanned sideways.</p>
+    </div>
+    <div class="card">
+      <h3>Order and clean up</h3>
+      <p>Reorder pages, ignore one for this export, delete it, or clear the queue in a single step.</p>
+    </div>
+  </div>
+
+  <h2>Export</h2>
+  <p class="sub">Your paper size, your PDF.</p>
+  <ul class="plain">
+    <li><b>Seven page sizes</b> — A4, Letter, Legal, A5, A3, B5 and Tabloid.</li>
+    <li><b>Share or open</b> — send the PDF anywhere, or read it inside the app.</li>
+    <li><b>History</b> — every PDF you create is listed so you can reopen it later.</li>
+    <li><b>Files app access</b> — your PDFs sit in the app's own folder, in the local storage of your device.</li>
+  </ul>
+
+  <h2>Built for privacy</h2>
+  <p class="sub">Nothing to sign up for, nothing to leak.</p>
+  <ul class="plain">
+    <li><b>Works offline</b> — no connection needed for any part of the app.</li>
+    <li><b>No servers</b> — your documents are never uploaded anywhere.</li>
+    <li><b>No third-party SDKs</b> — no analytics, no advertising, no crash reporting that sends your data out.</li>
+    <li><b>No account</b> — there is nothing to register and nothing to log in to.</li>
+  </ul>
+
+  <h2>Speaks your language</h2>
+  <p class="sub">English, Simplified Chinese, Traditional Chinese, Japanese, Korean, Spanish, French, German, Portuguese, Russian and Italian — with light, dark and system appearance.</p>
+
+  <footer>
+    <p>Questions or feedback? Write to <a href="mailto:supportbx@163.com">supportbx@163.com</a></p>
+    <p><a href="./privacy-policy.html">Privacy Policy</a> · <a href="./support.html">Support</a></p>
+  </footer>
+
+</div>
+</body>
+</html>
