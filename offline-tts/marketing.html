@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OwnVoice — Offline Text to Speech &amp; Personal Voice for iPhone and iPad</title>
+<meta name="description" content="OwnVoice turns any text into speech on your iPhone — in a built-in voice or your own. Fully offline, one-time purchase, no subscription.">
+<style>
+  :root{
+    --bg:#f5f8fd; --card:#ffffff; --text:#0f172a; --muted:#5a6b85;
+    --brand:#2a66d8; --brand-soft:#dcebff; --line:#e3e9f2; --shadow:0 10px 30px rgba(15,23,42,.06);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0b1220; --card:#131c2e; --text:#e8eefb; --muted:#9fb0c9;
+      --brand:#6aa6ff; --brand-soft:#1b2b46; --line:#22304a; --shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--brand); text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:880px; margin:0 auto; padding:0 20px}
+  header.site{background:var(--card); border-bottom:1px solid var(--line)}
+  .nav{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:16px 20px; flex-wrap:wrap}
+  .brand{display:flex; align-items:center; gap:10px; font-weight:700; color:var(--text); letter-spacing:-.01em}
+  .brand:hover{text-decoration:none}
+  .mark{width:26px; height:26px; border-radius:8px; background:var(--brand-soft); border:1px solid var(--line); display:grid; place-items:center}
+  .mark svg{width:16px; height:16px; display:block}
+  nav.links{display:flex; gap:18px; font-size:15px}
+  nav.links a{color:var(--muted)}
+  nav.links a.active{color:var(--brand); font-weight:600}
+
+  .hero{padding:56px 0 12px}
+  .hero .mark-large{width:84px; height:84px; border-radius:22px; background:linear-gradient(135deg,#4a96ff,#0a36b0); display:grid; place-items:center; box-shadow:var(--shadow); margin-bottom:22px}
+  .hero .mark-large svg{width:52px; height:52px; display:block}
+  h1{font-size:clamp(30px,5vw,44px); line-height:1.14; margin:0 0 14px; letter-spacing:-.025em}
+  .lede{font-size:19px; color:var(--muted); margin:0 0 22px; max-width:42em}
+  .pill-row{display:flex; gap:10px; flex-wrap:wrap; margin:0 0 26px; padding:0; list-style:none}
+  .pill{background:var(--brand-soft); color:var(--brand); border:1px solid var(--line); border-radius:999px; padding:7px 14px; font-size:14px; font-weight:600}
+  .cta{display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin-bottom:8px}
+  .btn{
+    display:inline-block; background:var(--brand); color:#fff !important; font-weight:600;
+    padding:13px 24px; border-radius:999px; text-decoration:none !important;
+  }
+  .btn.ghost{background:transparent; color:var(--brand) !important; border:1px solid var(--line)}
+  .fineprint{color:var(--muted); font-size:14px; margin:14px 0 0}
+
+  section{padding:38px 0 0}
+  h2{font-size:clamp(22px,3vw,28px); margin:0 0 14px; letter-spacing:-.02em}
+  h3{font-size:17px; margin:0 0 6px}
+  p{margin:0 0 14px}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:16px; padding:22px 24px; box-shadow:var(--shadow)}
+  .grid{display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+  .feature{background:var(--card); border:1px solid var(--line); border-radius:16px; padding:20px 22px}
+  .feature p{margin:0; color:var(--muted)}
+  ul.checks{list-style:none; padding:0; margin:0}
+  ul.checks li{padding-left:26px; position:relative; margin:9px 0}
+  ul.checks li::before{
+    content:""; position:absolute; left:0; top:.55em; width:12px; height:7px;
+    border-left:2px solid var(--brand); border-bottom:2px solid var(--brand); transform:rotate(-45deg);
+  }
+  .steps{counter-reset:s; list-style:none; padding:0; margin:0}
+  .steps li{counter-increment:s; position:relative; padding-left:44px; margin:16px 0}
+  .steps li::before{
+    content:counter(s); position:absolute; left:0; top:-2px; width:30px; height:30px; border-radius:50%;
+    background:var(--brand); color:#fff; display:grid; place-items:center; font-weight:700; font-size:15px;
+  }
+  .steps h3{margin-bottom:2px}
+  .steps p{margin:0; color:var(--muted)}
+  blockquote{margin:0; padding:18px 22px; background:var(--brand-soft); border-radius:16px; border:1px solid var(--line)}
+  blockquote p{margin:0; font-size:18px; font-weight:600; color:var(--text)}
+  footer.site{margin-top:56px; border-top:1px solid var(--line); background:var(--card)}
+  footer.site .wrap{padding:26px 20px; display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap; font-size:14px; color:var(--muted)}
+  footer.site nav{display:flex; gap:16px; flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="brand" href="./marketing.html">
+      <span class="mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M12 2.4c2 1 4.2 1.7 6.4 1.9v6.2c0 4.7-2.7 8.1-6.4 11.1-3.7-3-6.4-6.4-6.4-11.1V4.3C7.8 4.1 10 3.4 12 2.4Z" fill="#2a66d8"/><g fill="#fff"><rect x="8.2" y="10.4" width="1.5" height="3.6" rx=".75"/><rect x="11.25" y="8.6" width="1.5" height="7.2" rx=".75"/><rect x="14.3" y="11.4" width="1.5" height="2.6" rx=".75"/></g></svg>
+      </span>
+      OwnVoice
+    </a>
+    <nav class="links">
+      <a href="./marketing.html" class="active">Product</a>
+      <a href="./support.html">Support</a>
+      <a href="./privacy.html">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <div class="mark-large" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="M12 2.4c2 1 4.2 1.7 6.4 1.9v6.2c0 4.7-2.7 8.1-6.4 11.1-3.7-3-6.4-6.4-6.4-11.1V4.3C7.8 4.1 10 3.4 12 2.4Z" fill="#ffffff"/><g fill="#2a66d8"><rect x="8.2" y="10.4" width="1.5" height="3.6" rx=".75"/><rect x="11.25" y="8.6" width="1.5" height="7.2" rx=".75"/><rect x="14.3" y="11.4" width="1.5" height="2.6" rx=".75"/></g></svg>
+    </div>
+    <h1>Turn any text into speech — in your own voice</h1>
+    <p class="lede">
+      OwnVoice reads articles, notes, chapters and scripts aloud on your iPhone and iPad. Choose one of the voices already built into iOS, or record ten seconds and have it read in yours. No internet, no account, no subscription.
+    </p>
+    <ul class="pill-row">
+      <li class="pill">Works offline</li>
+      <li class="pill">Nothing uploaded</li>
+      <li class="pill">Buy once</li>
+      <li class="pill">No subscription</li>
+      <li class="pill">No ads</li>
+    </ul>
+    <div class="cta">
+      <a class="btn" href="https://apps.apple.com/app/id0000000000">Download on the App Store</a>
+      <a class="btn ghost" href="./support.html">Get support</a>
+    </div>
+    <p class="fineprint">One-time purchase. iPhone and iPad. iOS 16.4 or later.</p>
+  </div>
+
+  <section>
+    <h2>Three steps, then listen</h2>
+    <ol class="steps">
+      <li>
+        <h3>Choose a voice</h3>
+        <p>The voices iOS already has are listed for you, with the ones for your language first. Tap Preview on any of them to hear it read your text before you decide.</p>
+      </li>
+      <li>
+        <h3>Paste your text</h3>
+        <p>An article, a chapter, meeting notes, a script. Length is not a problem — long passages are split by sentence and joined back into a single file.</p>
+      </li>
+      <li>
+        <h3>Tap Generate</h3>
+        <p>The audio is created on the device, saved to My Audio and played straight away. Keep it, rename it, share it, or send it to the Files app.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Why people choose OwnVoice</h2>
+    <div class="grid">
+      <div class="feature">
+        <h3>Genuinely offline</h3>
+        <p>No network connection is ever opened. Airplane mode is not a workaround here — it is the normal way to use it. Nothing you type or record can leak, because there is nowhere for it to go.</p>
+      </div>
+      <div class="feature">
+        <h3>Read it in your own voice</h3>
+        <p>Record about ten seconds of speech and OwnVoice builds a personal voice from it, on the device. It then sits in the voice list beside the built-in ones and reads anything you type.</p>
+      </div>
+      <div class="feature">
+        <h3>One purchase, yours forever</h3>
+        <p>No subscription, no in-app purchases, no ads, no watermark, no upsells. Every feature is included from the moment you buy it.</p>
+      </div>
+      <div class="feature">
+        <h3>Voices that are already there</h3>
+        <p>OwnVoice reads with the voices built into iOS, so they work instantly and without a download. Novelty sound effects are filtered out — you get reading voices, not sound effects.</p>
+      </div>
+      <div class="feature">
+        <h3>Long text handled for you</h3>
+        <p>Paste as much as you like. The app splits it by sentence, generates each part and joins the result into one WAV file — no manual chopping.</p>
+      </div>
+      <div class="feature">
+        <h3>Audio you actually keep</h3>
+        <p>Every generation is saved to My Audio, where you can play, rename, share or delete it, and export it through the standard iOS share sheet.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Details, without the clutter</h2>
+    <p>
+      Speed, pitch and tone live in a folded panel called <strong>Reading details</strong>, closed by default. The defaults are chosen to sound right, so most people never open it — but when you want a slower read for a long document or a livelier one for a script, it is one tap away. A single <strong>Reset</strong> puts everything back.
+    </p>
+  </section>
+
+  <section>
+    <h2>Your voice stays on your phone</h2>
+    <p>
+      This is the whole point of the app, so it is worth being precise about it. OwnVoice contains no networking code at all: no analytics, no crash reporting, no advertising identifier, no third-party data collection. Your recording, the personal voice built from it, and every audio file you generate are kept in the app's private storage on this device, protected by iOS encryption — not exported, not backed up to iCloud, not uploaded.
+    </p>
+    <p>
+      You can delete any single clip, clear all generated audio, or erase everything including your personal voice, from inside the app. The full detail is in the <a href="./privacy.html">privacy policy</a>.
+    </p>
+  </section>
+
+  <section>
+    <h2>Please only clone your own voice</h2>
+    <blockquote>
+      <p>OwnVoice is for reading text in your own voice. It asks you to confirm that before your first recording, and it ships with no celebrity or third-party voices of any kind.</p>
+    </blockquote>
+  </section>
+
+  <section>
+    <h2>Who it is for</h2>
+    <p>
+      People who would rather listen than read: students and commuters working through long documents, language learners, writers checking how a sentence sounds out loud, and anyone who has ever wished their phone could read to them without sending the text to somebody else's computer.
+    </p>
+  </section>
+
+  <section>
+    <h2>Questions</h2>
+    <p>
+      Have a look at the <a href="./support.html">support page</a> for answers about voices, personal voice, exported audio and troubleshooting — or email <a href="mailto:supportbx@163.com">supportbx@163.com</a> and we will get back to you.
+    </p>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div>© 2026 OwnVoice. All rights reserved.</div>
+    <nav>
+      <a href="./marketing.html">Product</a>
+      <a href="./support.html">Support</a>
+      <a href="./privacy.html">Privacy Policy</a>
+      <a href="mailto:supportbx@163.com">supportbx@163.com</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>

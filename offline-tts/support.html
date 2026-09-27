@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support — OwnVoice</title>
+<meta name="description" content="Support and help for OwnVoice, the offline text-to-speech app with a personal voice that never leaves your device.">
+<style>
+  :root{
+    --bg:#f5f8fd; --card:#ffffff; --text:#0f172a; --muted:#5a6b85;
+    --brand:#2a66d8; --brand-soft:#dcebff; --line:#e3e9f2; --shadow:0 10px 30px rgba(15,23,42,.06);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0b1220; --card:#131c2e; --text:#e8eefb; --muted:#9fb0c9;
+      --brand:#6aa6ff; --brand-soft:#1b2b46; --line:#22304a; --shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--brand); text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:880px; margin:0 auto; padding:0 20px}
+  header.site{background:var(--card); border-bottom:1px solid var(--line)}
+  .nav{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:16px 20px; flex-wrap:wrap}
+  .brand{display:flex; align-items:center; gap:10px; font-weight:700; color:var(--text); letter-spacing:-.01em}
+  .brand:hover{text-decoration:none}
+  .mark{width:26px; height:26px; border-radius:8px; background:var(--brand-soft); border:1px solid var(--line); display:grid; place-items:center}
+  .mark svg{width:16px; height:16px; display:block}
+  nav.links{display:flex; gap:18px; font-size:15px}
+  nav.links a{color:var(--muted)}
+  nav.links a.active{color:var(--brand); font-weight:600}
+  main{padding:44px 0 8px}
+  h1{font-size:clamp(28px,4.4vw,38px); line-height:1.2; margin:0 0 10px; letter-spacing:-.02em}
+  .lede{font-size:18px; color:var(--muted); margin:0 0 28px}
+  h2{font-size:20px; margin:38px 0 12px; letter-spacing:-.01em}
+  h3{font-size:16px; margin:24px 0 6px}
+  p{margin:0 0 14px}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:16px; padding:22px 24px; box-shadow:var(--shadow)}
+  .contact{display:flex; align-items:center; gap:16px; flex-wrap:wrap}
+  .contact .big{font-size:19px; font-weight:650}
+  .btn{
+    display:inline-block; background:var(--brand); color:#fff !important; font-weight:600;
+    padding:12px 22px; border-radius:999px; text-decoration:none !important;
+  }
+  .btn.ghost{background:transparent; color:var(--brand) !important; border:1px solid var(--line)}
+  details{border-top:1px solid var(--line); padding:14px 0}
+  details:first-of-type{border-top:0}
+  details summary{
+    cursor:pointer; font-weight:600; list-style:none; display:flex; justify-content:space-between; gap:14px; align-items:flex-start;
+  }
+  details summary::-webkit-details-marker{display:none}
+  details summary::after{content:"+"; color:var(--brand); font-weight:700; flex:none}
+  details[open] summary::after{content:"–"}
+  details .answer{padding:10px 0 2px; color:var(--muted)}
+  details .answer ul{margin:8px 0 0; padding-left:20px}
+  details .answer li{margin:4px 0}
+  ul.checks{list-style:none; padding:0; margin:0}
+  ul.checks li{padding-left:26px; position:relative; margin:8px 0}
+  ul.checks li::before{
+    content:""; position:absolute; left:0; top:.55em; width:12px; height:7px;
+    border-left:2px solid var(--brand); border-bottom:2px solid var(--brand); transform:rotate(-45deg);
+  }
+  footer.site{margin-top:52px; border-top:1px solid var(--line); background:var(--card)}
+  footer.site .wrap{padding:26px 20px; display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap; font-size:14px; color:var(--muted)}
+  footer.site nav{display:flex; gap:16px; flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="brand" href="./marketing.html">
+      <span class="mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M12 2.4c2 1 4.2 1.7 6.4 1.9v6.2c0 4.7-2.7 8.1-6.4 11.1-3.7-3-6.4-6.4-6.4-11.1V4.3C7.8 4.1 10 3.4 12 2.4Z" fill="#2a66d8"/><g fill="#fff"><rect x="8.2" y="10.4" width="1.5" height="3.6" rx=".75"/><rect x="11.25" y="8.6" width="1.5" height="7.2" rx=".75"/><rect x="14.3" y="11.4" width="1.5" height="2.6" rx=".75"/></g></svg>
+      </span>
+      OwnVoice
+    </a>
+    <nav class="links">
+      <a href="./marketing.html">Product</a>
+      <a href="./support.html" class="active">Support</a>
+      <a href="./privacy.html">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <h1>Support</h1>
+  <p class="lede">Questions about voices, personal voice, exported audio or the app itself? We are happy to help.</p>
+
+  <div class="card contact">
+    <div>
+      <div class="big">Email us</div>
+      <div style="color:var(--muted)">supportbx@163.com &nbsp;·&nbsp; we reply within 2 business days</div>
+    </div>
+    <a class="btn" href="mailto:supportbx@163.com?subject=OwnVoice%20Support">Send an email</a>
+  </div>
+
+  <p style="margin-top:16px; color:var(--muted)">
+    You can also send feedback without leaving the app: open <strong>Settings &rarr; Send feedback</strong>, pick a category and a rating, and tap Send. Your message is handed to your own mail app, so nothing leaves the device without you seeing it first.
+  </p>
+
+  <h2>Frequently asked questions</h2>
+
+  <details open>
+    <summary>Does the app need an internet connection or an account?</summary>
+    <div class="answer">
+      No. OwnVoice is fully offline. There is no sign-up, no login, no cloud sync and no analytics. The voices come from iOS itself and the whole engine runs on your device, so the app behaves identically in airplane mode, on the underground or anywhere without a signal. It never opens a network connection, which is also why your text and your recordings cannot leak.
+    </div>
+  </details>
+
+  <details>
+    <summary>Where are my recordings, my personal voice and my audio files kept?</summary>
+    <div class="answer">
+      Inside the app's own private storage on this device, protected by iOS encryption. They are never uploaded, never synced and never shared with anyone unless you export a file yourself.
+      <ul>
+        <li>To delete one clip: open <strong>My Audio</strong>, swipe the row left, and confirm. You can also long-press a row for rename, share and delete.</li>
+        <li>To delete every generated clip but keep your personal voice: tap the bin icon at the top of <strong>My Audio</strong>.</li>
+        <li>To delete everything, including your personal voice: open <strong>Settings &rarr; Erase all data</strong>.</li>
+        <li>Deleting the app from your device also removes all of its data.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary>How do I create a voice in my own voice?</summary>
+    <div class="answer">
+      On the Dubbing screen, tap <strong>Record my voice</strong>. The app asks you to confirm that the voice is your own, then shows a short passage to read aloud. Tap the red button and read it at a natural pace — recording stops by itself after about ten seconds. The voice is built on the device, and it then appears in the voice list as <strong>My Voice</strong>.
+      <ul>
+        <li>Record in a quiet room and keep the phone at a normal distance.</li>
+        <li>If the take is too short or too quiet, the app says so and lets you try again. Nothing is lost.</li>
+        <li>Read the whole passage rather than stopping early — the more you read, the better the result.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary>Why does the app say my device cannot create a personal voice?</summary>
+    <div class="answer">
+      Creating a personal voice needs an on-device voice model, and the app only offers the feature when that model is available on your device. When it is not, OwnVoice tells you before recording starts rather than failing halfway through, and everything else in the app keeps working normally — every built-in voice is still available. If you use iOS Personal Voice (Settings &rarr; Accessibility &rarr; Personal Voice), OwnVoice can read in that voice too.
+    </div>
+  </details>
+
+  <details>
+    <summary>My language is not in the voice list. What can I do?</summary>
+    <div class="answer">
+      OwnVoice reads with the voices installed on your device, so a language only appears once its voice exists in iOS. To add more, open <strong>Settings &rarr; Accessibility &rarr; Spoken Content &rarr; Voices</strong>, pick your language and download a voice. Reopen the app and it will be in the list. When no voice is installed for your language yet, the app shows a notice at the top of the voice list with a shortcut to that screen.
+    </div>
+  </details>
+
+  <details>
+    <summary>How do I hear a voice before I use it?</summary>
+    <div class="answer">
+      Every row in the voice list has a <strong>Preview</strong> button, and the voice currently selected has one on the Dubbing screen too. Preview reads the text you have already typed — or a sample passage if the box is empty — in that voice. Choosing a voice never plays anything by itself; only the Preview button does.
+    </div>
+  </details>
+
+  <details>
+    <summary>I generated something and My Audio is still empty.</summary>
+    <div class="answer">
+      Saving audio to a file is not possible in every environment. If the app cannot write audio files where it is running, it tells you when you tap Generate, and the My Audio screen explains it as well instead of pretending you have not generated anything yet.
+      <ul>
+        <li>If you saw that message, the text was read aloud but no file was created.</li>
+        <li>On a normal App Store installation this does not happen — every generation is saved.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary>There is no sound, or the sound is very quiet.</summary>
+    <div class="answer">
+      A few things are worth checking:
+      <ul>
+        <li>Turn the volume up with the side buttons — the media volume, not the ringer.</li>
+        <li>Check the ring/silent switch. System speech on iOS can follow it, so a muted phone may stay quiet.</li>
+        <li>Disconnect any Bluetooth speaker or car kit the phone may still be connected to.</li>
+        <li>If the voice you picked refuses to be written to a file, the app reports it rather than producing a silent clip. Try another voice from the list.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary>How long a text can I generate, and where does the audio go?</summary>
+    <div class="answer">
+      Long passages are split by sentence and joined into one file automatically, so length is not something you need to manage. Each result is saved as a WAV file in the app's storage and listed on <strong>My Audio</strong>, where you can play, rename, share or delete it. Use the share button to send a clip to another app or save it into the Files app — from there it is yours to do whatever you like with.
+    </div>
+  </details>
+
+  <details>
+    <summary>What do speed, pitch and tone do?</summary>
+    <div class="answer">
+      They sit in the folded <strong>Reading details</strong> panel under the text box. Speed and pitch offer a few named steps rather than a slider, and tone adds a slight change of pace and pitch for a warmer, flatter or livelier read. The defaults are chosen to sound right, so you can ignore the panel entirely. Tone applies to the built-in voices; speed and pitch also apply to your personal voice.
+    </div>
+  </details>
+
+  <details>
+    <summary>Can I use this app to imitate someone else?</summary>
+    <div class="answer">
+      No, and please do not. OwnVoice is built to read text in your own voice. Before the first recording it asks you to confirm that the voice is yours, and there are no celebrity or third-party voices anywhere in the app. You are responsible for how you use the audio you create.
+    </div>
+  </details>
+
+  <details>
+    <summary>How do I request a refund?</summary>
+    <div class="answer">
+      All App Store purchases are handled by Apple, so refunds are requested from Apple rather than from us. Visit <a href="https://reportaproblem.apple.com" rel="noopener">reportaproblem.apple.com</a>, sign in with the Apple Account used for the purchase, and follow the steps. If we can help solve the problem instead, please email us first.
+    </div>
+  </details>
+
+  <h2>Quick troubleshooting</h2>
+  <ul class="checks">
+    <li>Nothing happens when you tap Generate? Make sure the text box is not empty — the button stays greyed out until there is something to read.</li>
+    <li>Wrong voice selected? Tap the voice row at the top of the Dubbing screen and pick another; use Preview to compare first.</li>
+    <li>Reading sounds rushed or slow? Open <strong>Reading details</strong> and pick a different speed. One tap on Reset returns everything to the defaults.</li>
+    <li>Preview is silent but generation works? Check the ring/silent switch and the media volume.</li>
+    <li>The app behaves unexpectedly? Close it completely and reopen it. Your audio and settings are preserved.</li>
+    <li>Still stuck? Email us with your device model, your iOS version, the voice you chose and what you expected to happen.</li>
+  </ul>
+
+  <h2>Before you write to us</h2>
+  <p>
+    Including the following saves a round trip: your device model and iOS version, the app version (shown on the App Store listing), which voice you selected — built-in or your own — the text or a sample of it, and what you expected to hear instead.
+  </p>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div>© 2026 OwnVoice. All rights reserved.</div>
+    <nav>
+      <a href="./marketing.html">Product</a>
+      <a href="./support.html">Support</a>
+      <a href="./privacy.html">Privacy Policy</a>
+      <a href="mailto:supportbx@163.com">supportbx@163.com</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
