@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HueStudy — Color &amp; Value Study for Painters</title>
+<meta name="description" content="HueStudy turns a reference photo into a painter's study: precise color sampling, six analysis layers, a pigment mixing guide and ΔE comparison. Offline, private, one-time purchase.">
+<style>
+  :root{
+    --paper:#F7F5F2; --card:#FFFFFF; --canvas:#EFEBE5;
+    --text:#1A1A1A; --muted:#6B6560; --tertiary:#8E8E93;
+    --primary:#5B7A9D; --primary-dark:#47617E; --primary-soft:#E8EDF3;
+    --line:#EAE6E1; --line-strong:#DFD9D2; --ink:#2F3E4E;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--paper);color:var(--text);
+    font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px}
+  header.top{padding:26px 0 0}
+  .row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:12px}
+  .mark{width:42px;height:42px;border-radius:12px;flex:0 0 auto;position:relative;overflow:hidden;
+    background:linear-gradient(140deg,#8AAACB,#5B7A9D 55%,#47617E);box-shadow:0 2px 8px rgba(71,97,126,.28)}
+  .mark .ball{width:16px;height:16px;border-radius:50%;position:absolute;top:9px;left:8px;background:#F4F1EC}
+  .mark .ball2{width:16px;height:16px;border-radius:50%;position:absolute;bottom:9px;right:8px;background:#2F3E4E}
+  .brand h1{font-size:20px;margin:0}
+  .brand p{margin:2px 0 0;color:var(--muted);font-size:13.5px}
+  nav.links{display:flex;flex-wrap:wrap;gap:8px}
+  nav.links a{font-size:13.5px;color:var(--primary-dark);text-decoration:none;background:var(--card);
+    border:1px solid var(--line);border-radius:999px;padding:6px 14px}
+  nav.links a:hover{border-color:var(--primary);color:var(--primary)}
+  .hero{padding:40px 0 8px;display:grid;grid-template-columns:1.15fr .85fr;gap:36px;align-items:center}
+  .hero h2{font-size:34px;line-height:1.2;margin:0 0 12px;letter-spacing:.2px}
+  .hero p{font-size:17px;color:#3A3733;margin:0 0 18px}
+  .eyebrow{display:inline-block;font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--primary-dark);background:var(--primary-soft);border-radius:999px;padding:4px 12px;margin-bottom:14px}
+  .cta{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+  .btn{display:inline-block;background:var(--primary);color:#fff;text-decoration:none;border-radius:11px;
+    padding:12px 20px;font-weight:600}
+  .btn:hover{background:var(--primary-dark)}
+  .btn.ghost{background:var(--card);color:var(--primary-dark);border:1px solid var(--line-strong);font-weight:600}
+  .btn.ghost:hover{border-color:var(--primary);color:var(--primary)}
+  .note{color:var(--tertiary);font-size:13px;margin-top:10px}
+  figure.app{margin:0;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px;
+    box-shadow:0 10px 30px rgba(26,26,26,.06)}
+  figure.app svg{display:block;width:100%;height:auto;border-radius:12px}
+  section{padding:34px 0;border-top:1px solid var(--line)}
+  h3.section{font-size:22px;margin:0 0 6px}
+  p.section-sub{color:var(--muted);margin:0 0 20px}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .tile{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+  .tile h4{margin:0 0 6px;font-size:16px}
+  .tile p{margin:0;color:#3A3733;font-size:14.6px}
+  .tile .dot{width:28px;height:28px;border-radius:9px;background:var(--canvas);border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;font-size:15px;margin-bottom:10px}
+  .layers{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:6px}
+  .layer{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
+  .layer strong{display:block;font-size:15px;margin-bottom:4px}
+  .layer span{color:var(--muted);font-size:14px}
+  .swatches{display:flex;gap:10px;margin:18px 0 0}
+  .sw{width:100%;height:54px;border-radius:10px;border:1px solid var(--line)}
+  .quote{background:var(--primary-soft);border:1px solid #D6E0EA;border-radius:14px;padding:18px 20px;color:#31465B}
+  ul.checks{margin:14px 0 0 20px;padding:0}
+  ul.checks li{margin:7px 0}
+  footer{border-top:1px solid var(--line-strong);padding:18px 0 44px;color:var(--tertiary);font-size:13.5px}
+  footer a{color:var(--tertiary)}
+  @media (max-width:820px){
+    .hero{grid-template-columns:1fr;gap:24px;padding-top:28px}
+    .grid,.layers{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:560px){
+    .grid,.layers{grid-template-columns:1fr}
+    .hero h2{font-size:27px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="row">
+      <div class="brand">
+        <div class="mark" aria-hidden="true"><span class="ball"></span><span class="ball2"></span></div>
+        <div>
+          <h1>HueStudy</h1>
+          <p>Color &amp; Value Study for Painters</p>
+        </div>
+      </div>
+      <nav class="links">
+        <a href="marketing.html" aria-current="page">About</a>
+        <a href="support.html">Support</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div>
+        <span class="eyebrow">Offline · No subscription</span>
+        <h2>Study the photo before you mix the paint.</h2>
+        <p>HueStudy turns any reference image into a painter's study: precise color sampling, six analysis layers, a pigment mixing guide and ΔE comparison with your own swatch. Everything happens on your device — no account, no ads, no tracking.</p>
+        <div class="cta">
+          <!-- Replace 0000000000 with the real App Store ID before publishing. -->
+          <a class="btn" href="https://apps.apple.com/app/id0000000000" rel="noopener">Get HueStudy on the App Store</a>
+          <a class="btn ghost" href="support.html">Support &amp; FAQ</a>
+        </div>
+        <p class="note">One-time purchase · No in-app purchases · iPhone and iPad, iOS 16.4 or later</p>
+      </div>
+
+      <figure class="app" aria-label="HueStudy analyzing a reference photo">
+        <svg viewBox="0 0 360 420" role="img" aria-label="Phone showing a photo grid, sample points and a color panel">
+          <rect width="360" height="420" rx="12" fill="#EFEBE5"/>
+          <rect x="96" y="16" width="168" height="300" rx="22" fill="#FFFFFF" stroke="#DFD9D2"/>
+          <rect x="106" y="30" width="148" height="196" rx="10" fill="#B9C7D6"/>
+          <path d="M106 176c22-30 40-44 60-40 22 4 34 26 54 22 14-3 24-14 34-30v62a10 10 0 0 1-10 10H116a10 10 0 0 1-10-10z" fill="#7E94AC"/>
+          <g stroke="#FFFFFF" stroke-opacity=".85" stroke-width="1">
+            <path d="M155.3 30v196M204.7 30v196M106 95.3h148M106 160.7h148"/>
+          </g>
+          <circle cx="144" cy="112" r="7" fill="#3E6E9B" stroke="#FFFFFF" stroke-width="2"/>
+          <circle cx="216" cy="150" r="7" fill="#8E5A46" stroke="#FFFFFF" stroke-width="2"/>
+          <rect x="106" y="236" width="148" height="10" rx="5" fill="#E8EDF3"/>
+          <rect x="106" y="254" width="106" height="8" rx="4" fill="#EFEBE5"/>
+          <rect x="106" y="270" width="130" height="8" rx="4" fill="#EFEBE5"/>
+          <rect x="96" y="292" width="168" height="34" rx="12" fill="#FFFFFF" stroke="#EAE6E1"/>
+          <g fill="#1A1A1A" fill-opacity=".72">
+            <rect x="118" y="306" width="18" height="6" rx="3"/>
+            <rect x="150" y="306" width="26" height="6" rx="3"/>
+            <rect x="190" y="306" width="26" height="6" rx="3"/>
+          </g>
+          <rect x="40" y="330" width="280" height="74" rx="14" fill="#FFFFFF" stroke="#EAE6E1"/>
+          <g>
+            <rect x="58" y="346" width="44" height="44" rx="9" fill="#3E6E9B"/>
+            <rect x="114" y="346" width="44" height="44" rx="9" fill="#8E5A46"/>
+            <rect x="170" y="346" width="44" height="44" rx="9" fill="#C8B58F"/>
+            <rect x="226" y="346" width="44" height="44" rx="9" fill="#5C6B57"/>
+            <rect x="282" y="346" width="20" height="44" rx="9" fill="#EFEBE5"/>
+          </g>
+        </svg>
+      </figure>
+    </div>
+
+    <section>
+      <h3 class="section">Built for the way painters actually work</h3>
+      <p class="section-sub">Value first. Then shape. Then temperature. Then color.</p>
+      <div class="grid">
+        <div class="tile">
+          <div class="dot" aria-hidden="true">◐</div>
+          <h4>Six study layers</h4>
+          <p>Value Map, Notan, Masses, Warm–Cool, Contours and Color Map — the same reductions a teacher draws on a print, in one tap.</p>
+        </div>
+        <div class="tile">
+          <div class="dot" aria-hidden="true">✳</div>
+          <h4>Precise sampling</h4>
+          <p>Single pixel or averaged area, with a loupe for the tight spots. HEX, RGB, HSV, LAB, value and saturation bars, and a warm/cool reading.</p>
+        </div>
+        <div class="tile">
+          <div class="dot" aria-hidden="true">≈</div>
+          <h4>Mixing guide</h4>
+          <p>Any sample becomes a recipe from a 28-pigment palette, calculated with Kubelka–Munk subtractive mixing — with the deviation spelled out.</p>
+        </div>
+        <div class="tile">
+          <div class="dot" aria-hidden="true">ΔE</div>
+          <h4>Compare with reality</h4>
+          <p>Photograph the swatch you mixed and read its ΔE against the target, plus which direction to correct.</p>
+        </div>
+        <div class="tile">
+          <div class="dot" aria-hidden="true">▦</div>
+          <h4>Composition grid</h4>
+          <p>Rows and columns fitted to your image's aspect ratio, including the classic 3×3 — and they export with the study.</p>
+        </div>
+        <div class="tile">
+          <div class="dot" aria-hidden="true">⤓</div>
+          <h4>Clean export</h4>
+          <p>Save a PNG of the study — grid, layers and marks included — to Photos, or send it wherever you keep references.</p>
+        </div>
+      </div>
+      <div class="swatches" aria-hidden="true">
+        <div class="sw" style="background:#3E6E9B"></div>
+        <div class="sw" style="background:#8E5A46"></div>
+        <div class="sw" style="background:#C8B58F"></div>
+        <div class="sw" style="background:#5C6B57"></div>
+        <div class="sw" style="background:#2F3E4E"></div>
+        <div class="sw" style="background:#EFEBE5"></div>
+      </div>
+    </section>
+
+    <section>
+      <h3 class="section">The six layers</h3>
+      <p class="section-sub">Each layer answers one question — and they are mutually exclusive, so the picture never turns into a pile of effects.</p>
+      <div class="layers">
+        <div class="layer"><strong>Value Map</strong><span>Grayscale posterized into 3–9 steps: is the value structure readable?</span></div>
+        <div class="layer"><strong>Notan</strong><span>Contrast pushed, then reduced to 2–4 flat tones: does the light–dark design hold?</span></div>
+        <div class="layer"><strong>Masses</strong><span>Neighbouring colors merged into large shapes: how do the big blocks relate?</span></div>
+        <div class="layer"><strong>Warm–Cool</strong><span>The picture tinted from blue to red: where does the temperature turn?</span></div>
+        <div class="layer"><strong>Contours</strong><span>Edge extraction to black lines on white: where does the drawing actually go?</span></div>
+        <div class="layer"><strong>Color Map</strong><span>The image repainted with its 3–6 dominant colors, with proportions listed.</span></div>
+      </div>
+    </section>
+
+    <section>
+      <h3 class="section">A quiet, private tool</h3>
+      <div class="grid">
+        <div class="tile">
+          <h4>Completely offline</h4>
+          <p>No account, no sync, no server. HueStudy makes no network requests, so it works in a gallery, a classroom, or anywhere with no signal.</p>
+        </div>
+        <div class="tile">
+          <h4>Your photos stay yours</h4>
+          <p>Images and camera frames are used on your device only, for the study you are making. Nothing is uploaded, and there is nothing to opt out of.</p>
+        </div>
+        <div class="tile">
+          <h4>Buy once, keep it</h4>
+          <p>A one-time purchase with every feature included: no subscription, no consumables, no upgrade prompts, no ads.</p>
+        </div>
+      </div>
+      <div class="quote" style="margin-top:18px">
+        <strong>Made for the easel, not for a feed.</strong> Up to 50 saved projects, 20 sample points per image, undo and redo everywhere, light and dark appearance, and 11 languages.
+      </div>
+    </section>
+
+    <section>
+      <h3 class="section">Who it is for</h3>
+      <ul class="checks">
+        <li>Oil, acrylic, watercolor and gouache painters planning a study from a reference.</li>
+        <li>Life-drawing and plein-air sketchers who want values settled before the light changes.</li>
+        <li>Art students working on value, Notan and color-temperature exercises.</li>
+        <li>Teachers preparing class demonstrations with a clear, printable reduction.</li>
+      </ul>
+      <div class="cta" style="margin-top:22px">
+        <a class="btn" href="https://apps.apple.com/app/id0000000000" rel="noopener">Get HueStudy on the App Store</a>
+        <a class="btn ghost" href="support.html">Questions? Read the FAQ</a>
+      </div>
+      <p class="note">iPhone and iPad · iOS 16.4 or later · One-time purchase</p>
+    </section>
+  </main>
+
+  <footer>
+    <p><a href="support.html">Support</a> · <a href="privacy.html">Privacy Policy</a> · <a href="mailto:supportbx@163.com">supportbx@163.com</a></p>
+    <p>© 2026 HueStudy. Apple, iPhone, iPad and App Store are trademarks of Apple Inc.</p>
+  </footer>
+
+</div>
+</body>
+</html>
