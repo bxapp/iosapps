@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Support — LogLens++</title>
+<meta name="description" content="Support and help center for LogLens++, the offline log viewer for iPhone. Import logs, fix common issues, contact support." />
+<style>
+  :root {
+    --bg: #0d1117; --surface: #161b22; --surface2: #1c2129; --border: #30363d;
+    --text: #e6edf3; --muted: #8b949e; --green: #3fb950; --blue: #58a6ff;
+    --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.6; }
+  a { color: var(--green); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+  header { padding: 48px 0 28px; text-align: center; }
+  .logo { display: inline-flex; align-items: center; gap: 10px; }
+  h1 { font-size: 28px; margin-top: 12px; }
+  .tagline { color: var(--muted); font-size: 15px; margin-top: 6px; }
+  section { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 26px; margin: 18px 0; }
+  h2 { font-size: 18px; margin-bottom: 14px; color: var(--text); }
+  h2 .hash { color: var(--green); font-family: var(--mono); margin-right: 6px; }
+  .muted { color: var(--muted); font-size: 14px; }
+  .mono { font-family: var(--mono); font-size: 14px; }
+  .email { display: inline-block; font-family: var(--mono); font-size: 15px; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 8px 14px; margin: 8px 0; }
+  details { border-top: 1px solid var(--border); padding: 14px 2px; }
+  details:first-of-type { border-top: none; }
+  summary { cursor: pointer; font-weight: 600; font-size: 15px; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; color: var(--green); font-family: var(--mono); font-size: 18px; }
+  details[open] summary::after { content: "−"; }
+  details p, details ul { color: var(--muted); font-size: 14.5px; margin-top: 10px; }
+  details ul { padding-left: 18px; }
+  details li { margin: 4px 0; }
+  ul.checks { list-style: none; padding: 0; margin-top: 10px; }
+  ul.checks li { padding-left: 24px; position: relative; color: var(--muted); font-size: 14.5px; margin: 8px 0; }
+  ul.checks li::before { content: "✓"; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+  footer { text-align: center; color: var(--muted); font-size: 13px; padding: 34px 0 46px; }
+  footer nav { margin-bottom: 10px; }
+  footer nav a { margin: 0 12px; }
+  .badge { display: inline-block; font-family: var(--mono); font-size: 12px; color: var(--green); background: rgba(63,185,80,.12); border: 1px solid rgba(63,185,80,.3); border-radius: 999px; padding: 3px 12px; margin: 4px 4px 0 0; }
+  @media (max-width: 520px) { section { padding: 20px 16px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="logo">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#3fb950" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M4.5 6.5l5 5.5-5 5.5" /><line x1="12.5" y1="17.5" x2="20" y2="17.5" />
+      </svg>
+    </div>
+    <h1>LogLens++ Support</h1>
+    <p class="tagline">The offline log viewer &amp; error finder for iPhone</p>
+    <div>
+      <span class="badge">100% offline</span><span class="badge">No account</span><span class="badge">Pay once</span>
+    </div>
+  </header>
+
+  <section>
+    <h2><span class="hash">01</span>Contact us</h2>
+    <p class="muted">Email is the fastest way to reach us. We usually reply within 2 business days.</p>
+    <!-- TODO: replace with your support mailbox if different -->
+    <a class="email" href="mailto:supportbx@163.com?subject=LogLens%2B%2B%20Support">supportbx@163.com</a>
+    <p class="muted" style="margin-top:12px">To help us reproduce the issue, please include:</p>
+    <ul class="checks">
+      <li>iPhone model and iOS version</li>
+      <li>LogLens++ version (Settings → About → Version)</li>
+      <li>Log format you were reading (log4j / JSON / syslog / plain)</li>
+      <li>What you expected vs. what happened</li>
+    </ul>
+    <p class="muted" style="margin-top:10px">⚠︎ Please <strong>redact any sensitive log content</strong> before sending — we don't need your production data to fix most issues.</p>
+  </section>
+
+  <section>
+    <h2><span class="hash">02</span>Getting started</h2>
+    <details open>
+      <summary>How do I import a log file?</summary>
+      <p>Two ways: (1) In the Files app or any app with a share sheet, tap <em>Share → LogLens++</em> — the log opens directly. (2) In LogLens++, tap <em>Import log</em> and pick a file. Supported formats: <span class="mono">.log</span> <span class="mono">.txt</span> <span class="mono">.json</span> <span class="mono">.gz</span> <span class="mono">.zip</span> <span class="mono">.tar.gz</span> <span class="mono">.rar</span>.</p>
+    </details>
+    <details>
+      <summary>What happens after import?</summary>
+      <p>LogLens++ decompresses .gz automatically, detects the format (log4j-style, JSON lines, syslog, plain text), classifies every line by severity, and indexes it. The reader opens on the first <span class="mono">ERROR</span> so you can start reading while indexing continues.</p>
+    </details>
+    <details>
+      <summary>How do I read errors efficiently?</summary>
+      <p>Use the <span class="mono">◀ ERR / ERR ▶</span> bar to step through errors, the rail on the right to jump anywhere, and tap an error line to expand its context. Long-press a line to copy it, bookmark it, or trace an ID (traceId, request ID, UUID) across the whole file.</p>
+    </details>
+  </section>
+
+  <section>
+    <h2><span class="hash">03</span>Troubleshooting</h2>
+    <details>
+      <summary>The .gz file fails to open</summary>
+      <p>The archive may be damaged, or it decompresses to more than 256&nbsp;MB. Try unarchiving on your computer and importing the plain log. Splitting very large logs is also a good workaround.</p>
+    </details>
+    <details>
+      <summary>Lines are classified incorrectly</summary>
+      <p>Level detection uses editable regular expressions. Go to <em>Settings → Parsing → Parsing rules</em> to adjust them for your log format, then re-index. You can restore defaults anytime.</p>
+    </details>
+    <details>
+      <summary>A file shows “Indexing failed” or is stuck</summary>
+      <p>Swipe left on the file card and choose <em>Re-index</em>. If the original archive was cleared by iOS, re-import the file. “Re-index” also applies new parsing rules to already-opened files.</p>
+    </details>
+    <details>
+      <summary>Where is my data stored? Can I recover it?</summary>
+      <p>All logs and indexes live only inside the app's sandbox on your device — nothing is synced or uploaded. Deleting a file in LogLens++ (or uninstalling the app) permanently removes it. Keep your source files if you need backups.</p>
+    </details>
+    <details>
+      <summary>How do I restore my purchase on a new iPhone?</summary>
+      <p>LogLens++ is a one-time purchase tied to your Apple ID. Install the app on the new device and restore purchases from the App Store, or sign in with the same Apple ID — no re-purchase needed.</p>
+    </details>
+  </section>
+
+  <footer>
+    <nav>
+      <a href="marketing.html">About LogLens++</a>
+      <a href="privacy.html">Privacy Policy</a>
+    </nav>
+    <div>© 2026 LogLens++. All rights reserved.</div>
+  </footer>
+
+</div>
+</body>
+</html>
