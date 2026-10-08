@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ViewVector — Support</title>
+<meta name="description" content="Support for ViewVector, the offline AI, DXF, SVG and PDF viewer for print, sign and laser shops.">
+<style>
+  :root{
+    --bg:#0B0B0D; --surface:#141519; --card:#1B1C21; --line:rgba(255,255,255,.09);
+    --text:#F5F5F7; --muted:#9A9AA2; --accent:#0A84FF; --accent-soft:rgba(10,132,255,.14);
+    --radius:16px;
+  }
+  @media (prefers-color-scheme: light){
+    :root{
+      --bg:#F5F5F7; --surface:#FFFFFF; --card:#FFFFFF; --line:rgba(0,0,0,.08);
+      --text:#101013; --muted:#6C6C74; --accent:#0071E3; --accent-soft:rgba(0,113,227,.10);
+    }
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font:16px/1.65 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    padding:0 20px 72px;
+  }
+  .wrap{max-width:760px;margin:0 auto}
+  header{padding:40px 0 8px;display:flex;align-items:center;gap:14px}
+  .mark{width:44px;height:44px;border-radius:13px;background:linear-gradient(180deg,#16171B,#09090B);
+    display:flex;align-items:center;justify-content:center;flex:0 0 auto;border:1px solid var(--line)}
+  .brand{font-size:19px;font-weight:650;letter-spacing:.2px;line-height:1.2}
+  .brand span{display:block;font-size:12.5px;font-weight:450;color:var(--muted);letter-spacing:.3px;margin-top:2px}
+  nav{margin:22px 0 0;display:flex;flex-wrap:wrap;gap:8px}
+  nav a{
+    font-size:13.5px;text-decoration:none;color:var(--muted);border:1px solid var(--line);
+    background:var(--surface);padding:7px 13px;border-radius:999px
+  }
+  nav a[aria-current]{color:var(--text);border-color:transparent;background:var(--accent-soft)}
+  h1{font-size:33px;line-height:1.18;letter-spacing:-.5px;margin:34px 0 10px;font-weight:700}
+  .lede{color:var(--muted);font-size:17px;margin:0 0 30px;max-width:62ch}
+  h2{font-size:19px;letter-spacing:-.2px;margin:38px 0 12px;font-weight:650}
+  h3{font-size:15.5px;margin:22px 0 4px;font-weight:600}
+  p{margin:0 0 12px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;margin:14px 0}
+  .contact{display:flex;flex-wrap:wrap;align-items:center;gap:14px;justify-content:space-between}
+  .contact p{margin:0;color:var(--muted);font-size:14.5px}
+  a.mail{
+    display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;font-size:15px;
+    padding:11px 18px;border-radius:12px;white-space:nowrap
+  }
+  dl{margin:6px 0 0}
+  dt{font-weight:600;font-size:15.5px;margin-top:20px}
+  dd{margin:4px 0 0;color:var(--muted);font-size:15px}
+  ul{margin:6px 0 12px;padding-left:20px;color:var(--muted)}
+  li{margin:5px 0}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14.5px}
+  th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--muted);font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.6px}
+  code{font:13.5px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:var(--accent-soft);
+    color:var(--text);padding:2px 6px;border-radius:6px}
+  footer{margin-top:52px;padding-top:22px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+  footer a{color:var(--muted)}
+  .note{font-size:14px;color:var(--muted);margin-top:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="mark" aria-hidden="true">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+        <rect x="3.6" y="3.6" width="16.8" height="16.8" rx="5" stroke="#0A84FF" stroke-width="1.9"/>
+        <path d="M8.4 15.6L15.6 8.4" stroke="#0A84FF" stroke-width="1.9" stroke-linecap="round"/>
+        <circle cx="8.4" cy="15.6" r="1.9" fill="#0A84FF"/>
+        <circle cx="15.6" cy="8.4" r="1.9" fill="#0A84FF"/>
+      </svg>
+    </div>
+    <div class="brand">ViewVector<span>AI · DXF · SVG · PDF — offline viewer</span></div>
+  </header>
+
+  <nav>
+    <a href="support.html" aria-current="page">Support</a>
+    <a href="marketing.html">Overview</a>
+    <a href="privacy.html">Privacy</a>
+  </nav>
+
+  <h1>Support</h1>
+  <p class="lede">
+    Help with opening, measuring and exporting artwork in ViewVector. Most questions are answered below —
+    if yours is not, email us and we will reply.
+  </p>
+
+  <div class="card contact">
+    <p>Email support — please include your iOS version, the app version, and the file format you were opening.</p>
+    <a class="mail" href="mailto:supportbx@163.com?subject=ViewVector%20Support">supportbx@163.com</a>
+  </div>
+  <p class="note">We usually reply within 1–2 business days.</p>
+
+  <h2>Common questions</h2>
+
+  <h3>My AI file will not open</h3>
+  <p>
+    ViewVector opens <strong>PDF-compatible</strong> Illustrator files (AI 9 and newer). Older native AI files,
+    and files saved without the PDF compatibility option, cannot be read. Open the file in Illustrator and
+    re-save it with <em>Create PDF Compatible File</em> enabled, then try again.
+  </p>
+
+  <h3>My DXF file is empty, or looks simplified</h3>
+  <p>
+    ViewVector renders <strong>2D drawings</strong>. DXF files that contain only 3D entities (SOLID, 3DFACE,
+    MESH and similar) have nothing to display. Advanced styles, hatches and custom linetypes may also be
+    simplified. If the drawing is 2D and still appears empty, send us the file — it helps us improve.
+  </p>
+
+  <h3>Why does the measurement not match my artwork?</h3>
+  <p>
+    Measurement accuracy depends on the units recorded inside the file:
+  </p>
+  <ul>
+    <li><strong>DXF</strong> — the drawing's own units setting is used. If the file was saved without units, ViewVector assumes millimetres.</li>
+    <li><strong>PDF / AI</strong> — page points are used, which is exact for print-sized documents.</li>
+    <li><strong>SVG</strong> — physical size comes from the file's <code>width</code> / <code>height</code>. An SVG saved without units is treated as CSS pixels (96 per inch), which is the web standard.</li>
+  </ul>
+  <p>Switch between millimetres and inches in Settings; every measurement updates immediately.</p>
+
+  <h3>What does Bleed Preview show?</h3>
+  <p>
+    A 3 mm bleed zone, highlighted as a band around the edge of the artwork, plus a dashed line marking where
+    the trim would fall. It answers one question quickly: will this artwork trim safely? It does not change the
+    file, and nothing is exported with the highlight.
+  </p>
+
+  <h3>Where do exported files go?</h3>
+  <p>
+    Exports are created on your device, then handed to the standard iOS share sheet. From there you can save to
+    Files, send by Mail or Messages, or pass the proof to another app. PNG exports are high-resolution bitmaps;
+    PDF exports keep the original page size and remain vector where the source allowed it.
+  </p>
+
+  <h3>Files over 100 MB</h3>
+  <p>
+    Very large files cannot be previewed on a phone without risking a crash, so ViewVector limits opening files
+    above roughly 100 MB and asks for confirmation above 30 MB. Splitting a large multi-page PDF into single
+    pages usually solves it.
+  </p>
+
+  <h3>Does ViewVector need an internet connection?</h3>
+  <p>
+    No. ViewVector works entirely offline and has no network access at all. That is deliberate: your clients'
+    artwork never leaves your device. See the <a href="privacy.html">privacy page</a> for details.
+  </p>
+
+  <h3>Managing recent files</h3>
+  <p>
+    The home screen lists recently opened files with thumbnails. Touch and hold an entry to remove it, or use
+    <em>Clear Recents</em> in Settings to remove every entry and its local copy at once. Removing a history entry
+    never touches the original file in Files, iCloud, Dropbox or wherever it came from.
+  </p>
+
+  <h2>System requirements</h2>
+  <table>
+    <tr><th>Item</th><th>Requirement</th></tr>
+    <tr><td>Devices</td><td>iPhone and iPad, portrait and landscape</td></tr>
+    <tr><td>Formats</td><td>AI (PDF-compatible, AI 9+), DXF (2D), SVG, PDF</td></tr>
+    <tr><td>Network</td><td>Not required — the app is fully offline</td></tr>
+    <tr><td>Purchases</td><td>One-time purchase. No subscription, no in-app purchases, no ads</td></tr>
+  </table>
+
+  <h2>Format limits, in plain words</h2>
+  <table>
+    <tr><th>Format</th><th>What works, and what may be simplified</th></tr>
+    <tr><td>AI</td><td>PDF-compatible files only (AI 9+). Legacy native AI and exclusive effects may be simplified.</td></tr>
+    <tr><td>DXF</td><td>2D drawings only. 3D entities and advanced styles are simplified.</td></tr>
+    <tr><td>SVG</td><td>Standard rendering. Filters and scripts are not executed.</td></tr>
+    <tr><td>PDF</td><td>Standard pages, including multi-page documents. Unsupported or encrypted content may be simplified.</td></tr>
+  </table>
+  <p class="note">ViewVector is a preview and preflight tool. Always verify production files in your original software before printing, cutting or engraving.</p>
+
+  <h2>Reporting a problem</h2>
+  <p>
+    If a file opens incorrectly, email it to <a href="mailto:supportbx@163.com?subject=ViewVector%20file%20issue">supportbx@163.com</a>
+    with a short note about what you expected. Files you send are used only to reproduce and fix the issue.
+  </p>
+
+  <footer>
+    <p>ViewVector — 100% offline vector viewer and preflight tool for AI, DXF, SVG and PDF artwork.</p>
+    <p><a href="support.html">Support</a> · <a href="marketing.html">Overview</a> · <a href="privacy.html">Privacy &amp; Formats</a></p>
+  </footer>
+
+</div>
+</body>
+</html>

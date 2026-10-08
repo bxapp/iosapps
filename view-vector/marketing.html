@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ViewVector — Offline AI, DXF, SVG & PDF Viewer for Print and Sign Shops</title>
+<meta name="description" content="ViewVector is a fully offline vector viewer and preflight tool for AI, DXF, SVG and PDF artwork. Measure real size, check 3 mm bleed, export a proof — your clients' files never leave your device.">
+<style>
+  :root{
+    --bg:#0B0B0D; --surface:#141519; --card:#1B1C21; --line:rgba(255,255,255,.09);
+    --text:#F5F5F7; --muted:#9A9AA2; --accent:#0A84FF; --accent-soft:rgba(10,132,255,.14);
+    --radius:18px;
+  }
+  @media (prefers-color-scheme: light){
+    :root{
+      --bg:#F5F5F7; --surface:#FFFFFF; --card:#FFFFFF; --line:rgba(0,0,0,.08);
+      --text:#101013; --muted:#6C6C74; --accent:#0071E3; --accent-soft:rgba(0,113,227,.10);
+    }
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--bg);color:var(--text);
+    font:16px/1.65 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    padding:0 20px 72px;
+  }
+  .wrap{max-width:820px;margin:0 auto}
+  header{padding:40px 0 8px;display:flex;align-items:center;gap:14px}
+  .mark{width:44px;height:44px;border-radius:13px;background:linear-gradient(180deg,#16171B,#09090B);
+    display:flex;align-items:center;justify-content:center;flex:0 0 auto;border:1px solid var(--line)}
+  .brand{font-size:19px;font-weight:650;letter-spacing:.2px;line-height:1.2}
+  .brand span{display:block;font-size:12.5px;font-weight:450;color:var(--muted);letter-spacing:.3px;margin-top:2px}
+  nav{margin:22px 0 0;display:flex;flex-wrap:wrap;gap:8px}
+  nav a{font-size:13.5px;text-decoration:none;color:var(--muted);border:1px solid var(--line);
+    background:var(--surface);padding:7px 13px;border-radius:999px}
+  nav a[aria-current]{color:var(--text);border-color:transparent;background:var(--accent-soft)}
+  h1{font-size:40px;line-height:1.12;letter-spacing:-.8px;margin:38px 0 14px;font-weight:700;max-width:22ch}
+  h1 em{font-style:normal;color:var(--accent)}
+  .lede{color:var(--muted);font-size:18px;margin:0 0 26px;max-width:60ch}
+  .pills{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 34px}
+  .pill{font-size:13.5px;color:var(--text);background:var(--surface);border:1px solid var(--line);
+    padding:7px 13px;border-radius:999px}
+  h2{font-size:22px;letter-spacing:-.3px;margin:46px 0 8px;font-weight:680}
+  .sub{color:var(--muted);margin:0 0 18px;max-width:62ch}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:6px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px}
+  .card h3{margin:12px 0 6px;font-size:16.5px;font-weight:640}
+  .card p{margin:0;color:var(--muted);font-size:14.6px;line-height:1.6}
+  .ico{width:34px;height:34px;border-radius:10px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center}
+  ol.steps{margin:8px 0 0;padding-left:0;list-style:none;counter-reset:s}
+  ol.steps li{counter-increment:s;position:relative;padding-left:46px;margin:0 0 18px}
+  ol.steps li::before{
+    content:counter(s);position:absolute;left:0;top:1px;width:30px;height:30px;border-radius:50%;
+    background:var(--accent);color:#fff;font-size:14.5px;font-weight:700;display:flex;align-items:center;justify-content:center
+  }
+  ol.steps strong{display:block;font-size:16.5px;margin-bottom:2px}
+  ol.steps span{color:var(--muted);font-size:15px}
+  table{width:100%;border-collapse:collapse;margin:12px 0 0;font-size:14.8px}
+  th,td{text-align:left;padding:12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--muted);font-weight:600;font-size:12.5px;text-transform:uppercase;letter-spacing:.7px}
+  .quote{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--accent);
+    border-radius:14px;padding:20px 24px;margin:10px 0;color:var(--muted);font-size:15.5px}
+  .quote strong{color:var(--text)}
+  footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+  footer a{color:var(--muted)}
+  .note{font-size:14px;color:var(--muted);margin-top:10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="mark" aria-hidden="true">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+        <rect x="3.6" y="3.6" width="16.8" height="16.8" rx="5" stroke="#0A84FF" stroke-width="1.9"/>
+        <path d="M8.4 15.6L15.6 8.4" stroke="#0A84FF" stroke-width="1.9" stroke-linecap="round"/>
+        <circle cx="8.4" cy="15.6" r="1.9" fill="#0A84FF"/>
+        <circle cx="15.6" cy="8.4" r="1.9" fill="#0A84FF"/>
+      </svg>
+    </div>
+    <div class="brand">ViewVector<span>AI · DXF · SVG · PDF — offline viewer</span></div>
+  </header>
+
+  <nav>
+    <a href="marketing.html" aria-current="page">Overview</a>
+    <a href="support.html">Support</a>
+    <a href="privacy.html">Privacy</a>
+  </nav>
+
+  <h1>Check client artwork on site — <em>without uploading a thing.</em></h1>
+  <p class="lede">
+    ViewVector opens AI, DXF, SVG and PDF files on iPhone and iPad, measures real-world size, shows the 3 mm
+    bleed zone, and exports a proof for the customer. Fully offline. No account, no subscription, no ads.
+  </p>
+  <div class="pills">
+    <span class="pill">100% offline</span>
+    <span class="pill">Measure in mm / inch</span>
+    <span class="pill">3 mm bleed preview</span>
+    <span class="pill">PNG &amp; vector PDF export</span>
+    <span class="pill">One-time purchase</span>
+  </div>
+
+  <h2>Four formats, one app</h2>
+  <p class="sub">
+    The artwork your clients send arrives in whichever format their designer used. ViewVector handles the four
+    that matter in print, sign and cutting work — no conversion, no desktop, no trip back to the office.
+  </p>
+  <table>
+    <tr><th>Format</th><th>Typical job</th><th>Support</th></tr>
+    <tr><td>AI</td><td>Logos, packaging, supplied layouts</td><td>PDF-compatible files (AI 9+)</td></tr>
+    <tr><td>DXF</td><td>Cutting, engraving, routing paths</td><td>2D drawings</td></tr>
+    <tr><td>SVG</td><td>Decals, vinyl, web-ready vector</td><td>Standard rendering</td></tr>
+    <tr><td>PDF</td><td>Multi-page proofs and print-ready pages</td><td>Single and multi-page</td></tr>
+  </table>
+  <p class="note">Legacy native AI files, 3D DXF entities and advanced effects may be simplified. Verify production files in your original software before printing or cutting.</p>
+
+  <h2>What you can do in the first minute</h2>
+  <ol class="steps">
+    <li><strong>Measure real size</strong><span>Tap two points — banners, panels, decals — and read the true distance in millimetres or inches. Confirm a 1200 mm banner really is 1200 mm before anything goes on the printer.</span></li>
+    <li><strong>Check the bleed</strong><span>One switch highlights the standard 3 mm bleed zone and the trim line, so you can see at a glance whether the artwork trims safely.</span></li>
+    <li><strong>Send a proof</strong><span>Export a high-resolution PNG for a quick visual sign-off, or a vector PDF at the original page size for the quote and job ticket.</span></li>
+  </ol>
+
+  <h2>Privacy is the feature</h2>
+  <div class="quote">
+    <strong>Your clients' artwork never leaves your device.</strong> ViewVector has no network access at all — no
+    upload, no cloud processing, no analytics, no tracking, no advertising SDKs. That matters when the file is an
+    unreleased logo, packaging for a launch, or work under NDA.
+  </div>
+
+  <h2>Built for the way a shop works</h2>
+  <div class="grid">
+    <div class="card">
+      <div class="ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M4 8V4h4M20 8V4h-4M4 16v4h4M20 16v4h-4" stroke="#0A84FF" stroke-width="2" stroke-linecap="round"/></svg></div>
+      <h3>Opens instantly</h3>
+      <p>Files open fitted to the screen. Pinch to zoom, one-finger pan, double-tap to refit. No setup screens, no parameters to interpret.</p>
+    </div>
+    <div class="card">
+      <div class="ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h10" stroke="#0A84FF" stroke-width="2" stroke-linecap="round"/></svg></div>
+      <h3>Multi-page documents</h3>
+      <p>Swipe through pages and jump anywhere with page thumbnails — useful for catalogue PDFs and multi-page proofs.</p>
+    </div>
+    <div class="card">
+      <div class="ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="4" stroke="#0A84FF" stroke-width="1.9"/><path d="M8.5 15.5l7-7" stroke="#0A84FF" stroke-width="1.9" stroke-linecap="round"/></svg></div>
+      <h3>Recents with thumbnails</h3>
+      <p>Yesterday's job is one tap away. Touch and hold to remove an entry, or clear the whole list in Settings.</p>
+    </div>
+    <div class="card">
+      <div class="ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 18v1a2 2 0 002 2h12a2 2 0 002-2v-1" stroke="#0A84FF" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <h3>Exports that arrive anywhere</h3>
+      <p>Save to Files, Mail, Messages or your shop's workflow through the standard iOS share sheet — generated on device.</p>
+    </div>
+  </div>
+
+  <h2>No subscription. Ever.</h2>
+  <p class="sub">
+    ViewVector is a one-time purchase. No subscription, no in-app purchases, no locked features, no ads, and no
+    account to create. Buy it once and use it on the jobs you already have.
+  </p>
+
+  <h2>Who uses it</h2>
+  <div class="grid">
+    <div class="card"><h3>Sign &amp; vinyl shops</h3><p>Open a layout in front of the customer, confirm size and bleed, and leave with an approved proof.</p></div>
+    <div class="card"><h3>Laser &amp; CNC operators</h3><p>Check a DXF cut path and its real dimensions before the material goes on the bed.</p></div>
+    <div class="card"><h3>Print brokers</h3><p>Review supplied artwork on site without opening a laptop or risking a cloud upload.</p></div>
+    <div class="card"><h3>Freelance designers</h3><p>Open a file straight from an email attachment, measure it, and reply with a marked-up PNG.</p></div>
+  </div>
+
+  <footer>
+    <p>ViewVector — 100% offline vector viewer and preflight tool for AI, DXF, SVG and PDF artwork. iPhone and iPad.</p>
+    <p><a href="support.html">Support</a> · <a href="marketing.html">Overview</a> · <a href="privacy.html">Privacy &amp; Formats</a> · <a href="mailto:supportbx@163.com">supportbx@163.com</a></p>
+  </footer>
+
+</div>
+</body>
+</html>
