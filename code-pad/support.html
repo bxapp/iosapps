@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Support for CodePad++ — the offline code, log and config viewer for iPhone. How to open files, supported formats, large files and contact.">
+<title>CodePad++ — Support</title>
+<style>
+  :root{
+    --bg:#0a0e1a; --card:#121a2e; --text:#eef2fb; --muted:#9aa8c4;
+    --line:rgba(255,255,255,.09); --brand:#2e82ff; --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"PingFang SC","Microsoft YaHei",sans-serif;
+    background:radial-gradient(1200px 600px at 50% -10%,#14306b 0%,var(--bg) 55%);
+    background-attachment:fixed;color:var(--text);line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:0 22px}
+  header{text-align:center;padding:64px 0 34px}
+  .logo{
+    width:68px;height:68px;margin:0 auto 18px;border-radius:18px;
+    background:linear-gradient(135deg,var(--brand),var(--brand2,#0b4edb));
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 14px 34px rgba(46,130,255,.35);
+  }
+  .logo svg{width:36px;height:36px}
+  h1{font-size:30px;font-weight:800;letter-spacing:-.02em}
+  header p{color:var(--muted);margin-top:8px}
+  h2{font-size:19px;font-weight:800;margin:34px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+  details{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);margin-bottom:10px;padding:15px 18px}
+  summary{font-weight:700;cursor:pointer;font-size:15px}
+  details p, details li{color:var(--muted);font-size:14px;margin-top:8px}
+  details ul{padding-left:20px;margin-top:8px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;margin-top:14px}
+  .card p{color:var(--muted);font-size:14px}
+  .card .mail{display:inline-block;margin-top:12px;color:#8fb8ff;background:rgba(46,130,255,.12);
+    border:1px solid rgba(46,130,255,.35);padding:10px 20px;border-radius:10px;text-decoration:none;font-weight:700;font-size:15px}
+  .note{color:var(--muted);font-size:13px;margin-top:14px}
+  footer{border-top:1px solid var(--line);margin-top:38px;padding:28px 0 44px;text-align:center;color:var(--muted);font-size:13px}
+  footer a{color:#8fb8ff;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="logo" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M8.5 6.5L3 12l5.5 5.5" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.5 6.5L21 12l-5.5 5.5" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.4 4.5l-2.8 15" stroke="#fff" stroke-width="1.9" stroke-linecap="round"/></svg>
+    </div>
+    <h1>CodePad++ Support</h1>
+    <p>Offline code, log &amp; config viewer for iPhone</p>
+  </header>
+
+  <h2>Quick answers</h2>
+
+  <details open>
+    <summary>How do I open a file?</summary>
+    <p>Two ways:</p>
+    <ul>
+      <li>Tap <b>Open File</b> in the app and pick a document from the Files app (including iCloud Drive).</li>
+      <li>In another app (Mail, Slack, WeChat, …), tap <b>Share → Open in CodePad++</b>, or use the share sheet's <b>Open In</b> action on a file in the Files app.</li>
+    </ul>
+    <p>Recently opened files appear on the home screen for one-tap access. Long-press an entry to remove it, or use <b>Settings → Clear entries</b> to remove all of them.</p>
+  </details>
+
+  <details>
+    <summary>Which formats are supported?</summary>
+    <p>Any text-based file. Built-in syntax highlighting covers 31 languages, including: log, txt, json, yaml / yml, ini / conf / cfg, toml, xml, html, css, js / jsx, ts / tsx, java, go, c / cpp, csharp, swift, kotlin, rust, php, dart, python, ruby, lua, shell, dockerfile, sql, markdown, diff, graphql, http and properties.</p>
+    <p>Files with unknown extensions are sniffed automatically — if they're text they open fine.</p>
+  </details>
+
+  <details>
+    <summary>Can I open .gz compressed logs?</summary>
+    <p>Yes. Gzipped logs (<b>.log.gz</b>, <b>.txt.gz</b>, …) are decompressed in the background with a progress indicator, then cached locally — the next open is instant. No manual extraction needed.</p>
+  </details>
+
+  <details>
+    <summary>How large a file can it handle?</summary>
+    <p>There is no hard limit. CodePad++ reads files in chunks and renders a virtualized list, so only the visible portion stays in memory — 100MB+ logs scroll smoothly and search stays responsive.</p>
+  </details>
+
+  <details>
+    <summary>How do I search, copy or jump to a line?</summary>
+    <p>Use the toolbar at the bottom of the viewer:</p>
+    <ul>
+      <li><b>Search</b> — global search with match highlighting, next/previous jump and case sensitivity.</li>
+      <li><b>Copy</b> — copy the current line, select multiple lines, or copy the whole file (up to 5MB).</li>
+      <li><b>#</b> — jump to any line number; <b>↑ ↓</b> — jump to top or bottom.</li>
+      <li><b>Aa</b> — font size, code theme, wrapping and line numbers.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>Does CodePad++ collect my data?</summary>
+    <p>No. CodePad++ is fully offline: it makes no network requests, contains no analytics or tracking, and has no accounts. Files are processed entirely on your device. See the <b>Privacy Policy</b> for details.</p>
+  </details>
+
+  <h2>Contact us</h2>
+  <div class="card">
+    <p>Found a bug, or missing a format you need? Email us and we'll help — include the file format and, if possible, a short description of what happened (please don't attach confidential logs).</p>
+    <a class="mail" href="mailto:supportbx@163.com?subject=%5BCodePad%2B%2B%5D%20Support">supportbx@163.com</a>
+    <p class="note">We usually reply within 1–2 business days.</p>
+  </div>
+
+  <footer>
+    <p><a href="marketing.html">Home</a> · <a href="privacy.html">Privacy Policy</a></p>
+    <p style="margin-top:8px">© 2026 CodePad++. All rights reserved.</p>
+  </footer>
+
+</div>
+</body>
+</html>
